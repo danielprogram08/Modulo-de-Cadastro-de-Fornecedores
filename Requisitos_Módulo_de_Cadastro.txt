@@ -1,0 +1,12 @@
+MÓDULO DE CADASTRO DE FORNECEDORES - INSIGHT_LAB
+
+---------REQUISITOS FUNCIONAIS-----------------
+
+1. Implementar uma página de login para administradores.
+2. Criar uma página inicial para o cadastro de fornecedores.
+3. Desenvolver uma página para busca de fornecedores.
+
+--------REQUISITOS NÃO FUNCIONAIS--------------
+
+1. O cadastro de administradores deve ser feito diretamente no banco de dados, sem interface gráfica.
+2. As senhas dos administradores devem ser armazenadas criptografadas no banco de dados.
