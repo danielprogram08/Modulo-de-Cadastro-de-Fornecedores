@@ -29,7 +29,7 @@ function login() {
         }, 2000); // Time in miliseconds to hide the loading spinner;
     }
 
-    /*fetch('http://localhost:8080/Admins/{id}')
+    /*fetch('http://localhost:8080/Admin/{id}')
         .then(response => {
             if (!response.ok) {
                 throw new Error('Erro na requisição');
