@@ -21,7 +21,6 @@ function login() {
         document.getElementById('spinner').classList.add('d-none');
         document.getElementById('btn-login').disabled = false;
     } else {
-        console.log(name + "\n" + email + "\n" + password);
         clear();
         // Hide the loading spinner;
         setTimeout(function () {
