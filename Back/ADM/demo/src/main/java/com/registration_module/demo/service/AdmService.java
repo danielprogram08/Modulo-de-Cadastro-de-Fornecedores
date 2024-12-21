@@ -13,11 +13,11 @@ import com.registration_module.demo.repository.AdmRepository;
 public class AdmService {
 
     @Autowired
-    private AdmRepository admRepository;
+    private AdmRepository repository;
 
     @Transactional(readOnly = true)
     public AdmDTO SearchById(@RequestBody Integer id) {
-        AdmEntity result = admRepository.findById(id).get();
+        AdmEntity result = repository.findById(id).get();
         AdmDTO dto = new AdmDTO(result);
         return dto;
     }

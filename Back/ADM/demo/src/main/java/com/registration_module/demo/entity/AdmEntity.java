@@ -1,5 +1,6 @@
 package com.registration_module.demo.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -7,14 +8,20 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "AdmDatabase")
+@Table(name = "administrators")
 public class AdmEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    
+    @Column(columnDefinition = "VARCHAR(40)", nullable = false)
     private String name;
+
+    @Column(columnDefinition = "VARCHAR(250)", nullable = false)
     private String email;
+
+    @Column(columnDefinition = "VARCHAR(16)", nullable = false)
     private String password;
 
     public AdmEntity () {
