@@ -1,13 +1,12 @@
 function login() {
     const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
 
     // Show the loading spinner;
     document.getElementById('spinner').classList.remove('d-none');
     document.getElementById('btn-login').disabled = true;
 
-    if (name == "" && email == "" && password == "" || name == "" || email == "" || password == "") {
+    if (name == "" && password == "" || name == "" || password == "") {
         let alert = document.createElement("div");
         let container = document.querySelector(".container");
         alert.innerHTML =
@@ -20,6 +19,7 @@ function login() {
         // Hide the loading spinner;
         document.getElementById('spinner').classList.add('d-none');
         document.getElementById('btn-login').disabled = false;
+
     } else {
         clear();
         // Hide the loading spinner;
@@ -27,9 +27,8 @@ function login() {
             document.getElementById('spinner').classList.add('d-none');
             document.getElementById('btn-login').disabled = false;
         }, 2000); // Time in miliseconds to hide the loading spinner;
-    }
 
-    /*fetch('http://localhost:8080/Admin/{id}')
+    /*fetch('http://localhost:8080/Admin/{name}')
         .then(response => {
             if (!response.ok) {
                 throw new Error('Erro na requisição');
@@ -39,10 +38,10 @@ function login() {
 
         .then(data => console.log(data))
         .catch(error => console.error('Erro:', error));*/
+    }
 }
 
 function clear() {
     document.getElementById('name').value = "";
-    document.getElementById('email').value = "";
     document.getElementById('password').value = "";
 }
