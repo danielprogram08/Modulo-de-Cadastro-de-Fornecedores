@@ -1,12 +1,11 @@
 package com.registration_module.demo.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestBody;
 
-import com.registration_module.demo.dto.AdmDTO;
 import com.registration_module.demo.entity.AdmEntity;
 import com.registration_module.demo.repository.AdmRepository;
 
@@ -17,13 +16,8 @@ public class AdmService {
     private AdmRepository repository;
 
     @Transactional(readOnly = true)
-    public ResponseEntity<AdmDTO> SearchById(@RequestBody Integer id) {
-        try {
-            AdmEntity result = repository.findById(id).orElseThrow();
-            AdmDTO dto = new AdmDTO(result);
-            return ResponseEntity.ok(dto);
-        } catch (java.util.NoSuchElementException e) {
-            return ResponseEntity.notFound().build();
-        }
+    public Optional<AdmEntity> SearchByCredentials (String name, String password) { //Optional in case of the value be like empty;
+        Optional<AdmEntity> result = Optional.ofNullable(repository.findByCredentials(name, password));
+        return result;
     }
 }
