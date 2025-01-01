@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.registration_module.demo.entity.AdmEntity;
+import com.registration_module.demo.dto.AdmDTO;
 import com.registration_module.demo.repository.AdmRepository;
 
 @Service
@@ -16,8 +16,11 @@ public class AdmService {
     private AdmRepository repository;
 
     @Transactional(readOnly = true)
-    public Optional<AdmEntity> SearchByCredentials (String name, String password) { //Optional in case of the value be like empty;
-        Optional<AdmEntity> result = Optional.ofNullable(repository.findByCredentials(name, password));
+    public Optional<AdmDTO> SearchByCredentials (String name, String password) { //Optional in case of the value be like empty;
+        Optional<AdmDTO> result = Optional.ofNullable(repository.findByCredentials(name, password));
+        if (!result.isPresent()) {
+            System.out.println("\n Administrador não encontrado!");
+        }
         return result;
     }
 }
