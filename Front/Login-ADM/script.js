@@ -19,25 +19,53 @@ function login() {
         // Hide the loading spinner;
         document.getElementById('spinner').classList.add('d-none');
         document.getElementById('btn-login').disabled = false;
-
     } else {
-        clear();
-        // Hide the loading spinner;
-        setTimeout(function () {
-            document.getElementById('spinner').classList.add('d-none');
-            document.getElementById('btn-login').disabled = false;
-        }, 2000); // Time in miliseconds to hide the loading spinner;
+        // Show the loading spinner;
+        document.getElementById('spinner').classList.remove('d-none');
+        document.getElementById('btn-login').disabled = true;
 
-    /*fetch('http://localhost:8080/Admin/{name}')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Erro na requisição');
-            }
-            return response.json(); // Convert the response in json;
-        })
+        fetch(`http://localhost:8080/Administrator/${name}/${password}`)
+        // 1. Trying the request to Back-End; 
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Erro na requisição');
+                }
+                return response.json(); // Convert the response in json;
+            })
+        // 2. Response and logic of the front;
+            .then(data => {
+                console.log(data);
+                let alertSucess = document.createElement("div");
+                let container = document.querySelector(".container");
+                alertSucess.innerHTML = 
+                    `<div style="position: fixed; top: 0; width: 100%; text-align: center;" class="alert alert-success" role="alert">
+                        Bem-Vindo!
+                    </div>`
+                container.style.marginTop = "20px";
+                document.body.appendChild(alertSucess);
+                document.body.insertBefore(alertSucess, document.body.firstChild)
 
-        .then(data => console.log(data))
-        .catch(error => console.error('Erro:', error));*/
+                clear();
+                // Hide the loading spinner;
+                document.getElementById('spinner').classList.add('d-none');
+                document.getElementById('btn-login').disabled = false;
+            })
+            .catch(error => {
+                console.error('Erro:', error);
+                // Show error message;
+                let alert = document.createElement("div");
+                let container = document.querySelector(".container");
+                alert.innerHTML =
+                    `<div style="position: fixed; top: 0; width: 100%; text-align: center;" class="alert alert-danger" role="alert">
+                        Erro ao fazer login!
+                    </div>`;
+                container.style.marginTop = "20px"; // add margin above of the container;
+                document.body.appendChild(alert);
+                document.body.insertBefore(alert, document.body.firstChild) // add the alert in first position;
+                // Hide the loading spinner;
+                document.getElementById('spinner').classList.add('d-none');
+                document.getElementById('btn-login').disabled = false;
+            });
     }
 }
 
