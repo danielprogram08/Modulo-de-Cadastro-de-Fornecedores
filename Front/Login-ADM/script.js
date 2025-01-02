@@ -11,7 +11,7 @@ function login() {
         let container = document.querySelector(".container");
         alert.innerHTML =
             `<div style="position: fixed; top: 0; width: 100%; text-align: center;" class="alert alert-danger" role="alert">
-                Preencha todos os campos!
+                𝗣𝗿𝗲𝗲𝗻𝗰𝗵𝗮 𝘁𝗼𝗱𝗼𝘀 𝗼𝘀 𝗰𝗮𝗺𝗽𝗼𝘀!
             </div>`;
         container.style.marginTop = "20px"; // add margin above of the container;
         document.body.appendChild(alert);
@@ -42,7 +42,7 @@ function login() {
 
                     alertAdm.innerHTML = 
                     `<div style="position: fixed; top: 0; width: 100%; text-align: center;" class="alert alert-danger" role="alert">
-                        Administrador não encontrado!
+                        𝗔𝗱𝗺𝗶𝗻𝗶𝘀𝘁𝗿𝗮𝗱𝗼𝗿 𝗻ã𝗼 𝗲𝗻𝗰𝗼𝗻𝘁𝗿𝗮𝗱𝗼!
                     </div>`;
                     container.style.marginTop = "20px";
                     document.body.appendChild(alertAdm);
@@ -53,7 +53,7 @@ function login() {
                 let container = document.querySelector(".container");
                 alertSucess.innerHTML = 
                     `<div style="position: fixed; top: 0; width: 100%; text-align: center;" class="alert alert-success" role="alert">
-                        Bem-Vindo!
+                        ✔️ 𝗕𝗲𝗺-𝗩𝗶𝗻𝗱𝗼!
                     </div>`
                 container.style.marginTop = "20px";
                 document.body.appendChild(alertSucess);
@@ -71,7 +71,7 @@ function login() {
                 let container = document.querySelector(".container");
                 alert.innerHTML =
                     `<div style="position: fixed; top: 0; width: 100%; text-align: center;" class="alert alert-danger" role="alert">
-                        Erro ao fazer login!
+                        𝗘𝗿𝗿𝗼 𝗮𝗼 𝗳𝗮𝘇𝗲𝗿 𝗹𝗼𝗴𝗶𝗻!
                     </div>`;
                 container.style.marginTop = "20px"; // add margin above of the container;
                 document.body.appendChild(alert);

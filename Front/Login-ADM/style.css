@@ -14,7 +14,7 @@ body {
     background-color: white;
     width: 80%;
     max-width: 350px;
-    height: 480px;
+    height: 490px;
     border-radius: 20px;
     padding: 20px;
     text-align: center;
@@ -44,6 +44,11 @@ label {
     text-align: left;
     font-weight: bold;
     margin: 10px;
+}
+
+p {
+    margin-top: 10px;
+    text-align: center;
 }
 
 .btn-login {
