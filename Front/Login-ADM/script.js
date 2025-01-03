@@ -1,10 +1,14 @@
 function login() {
     const name = document.getElementById('name').value;
     const password = document.getElementById('password').value;
+    let spinner = document.getElementById('spinner');
+    let TitleBtn = document.getElementById('title-btn');
+    let btnLogin = document.getElementById('btn-login');
 
     // Show the loading spinner;
-    document.getElementById('spinner').classList.remove('d-none');
-    document.getElementById('btn-login').disabled = true;
+    spinner.classList.remove('d-none');
+    TitleBtn.textContent = '';
+    btnLogin.disabled = true;
 
     if (name == "" && password == "" || name == "" || password == "") {
         let alert = document.createElement("div");
@@ -17,31 +21,33 @@ function login() {
         document.body.appendChild(alert);
         document.body.insertBefore(alert, document.body.firstChild) // add the alert in first position;
         // Hide the loading spinner;
-        document.getElementById('spinner').classList.add('d-none');
-        document.getElementById('btn-login').disabled = false;
+        spinner.classList.add('d-none');
+        TitleBtn.textContent = 'login';
+        btnLogin.disabled = false;
 
     } else {
         // Show the loading spinner;
-        document.getElementById('spinner').classList.remove('d-none');
-        document.getElementById('btn-login').disabled = true;
+        spinner.classList.remove('d-none');
+        TitleBtn.textContent = '';
+        btnLogin.disabled = true;
 
         fetch(`http://localhost:8080/Administrator/${name}/${password}`)
-        // 1. Trying the request to Back-End; 
+            // 1. Trying the request to Back-End; 
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Erro na requisição');
                 }
                 return response.json(); // Convert the response in json;
             })
-            
-        // 2. Response and logic of the front;
+
+            // 2. Response and logic of the front;
             .then(data => {
                 if (data == null) {
                     let alertAdm = document.createElement("div");
                     let container = document.querySelector(".container");
 
-                    alertAdm.innerHTML = 
-                    `<div style="position: fixed; top: 0; width: 100%; text-align: center;" class="alert alert-danger" role="alert">
+                    alertAdm.innerHTML =
+                        `<div style="position: fixed; top: 0; width: 100%; text-align: center;" class="alert alert-danger" role="alert">
                         𝗔𝗱𝗺𝗶𝗻𝗶𝘀𝘁𝗿𝗮𝗱𝗼𝗿 𝗻ã𝗼 𝗲𝗻𝗰𝗼𝗻𝘁𝗿𝗮𝗱𝗼!
                     </div>`;
                     container.style.marginTop = "20px";
@@ -51,7 +57,7 @@ function login() {
                 console.log(data);
                 let alertSucess = document.createElement("div");
                 let container = document.querySelector(".container");
-                alertSucess.innerHTML = 
+                alertSucess.innerHTML =
                     `<div style="position: fixed; top: 0; width: 100%; text-align: center;" class="alert alert-success" role="alert">
                         ✔️ 𝗕𝗲𝗺-𝗩𝗶𝗻𝗱𝗼!
                     </div>`
@@ -61,8 +67,9 @@ function login() {
 
                 clear();
                 // Hide the loading spinner;
-                document.getElementById('spinner').classList.add('d-none');
-                document.getElementById('btn-login').disabled = false;
+                spinner.classList.add('d-none');
+                TitleBtn.textContent = 'login';
+                btnLogin.disabled = false;
             })
             .catch(error => {
                 console.error('Erro:', error);
@@ -77,8 +84,9 @@ function login() {
                 document.body.appendChild(alert);
                 document.body.insertBefore(alert, document.body.firstChild) // add the alert in first position;
                 // Hide the loading spinner;
-                document.getElementById('spinner').classList.add('d-none');
-                document.getElementById('btn-login').disabled = false;
+                spinner.classList.add('d-none');
+                TitleBtn.textContent = 'login';
+                btnLogin.disabled = false;
             });
     }
 }

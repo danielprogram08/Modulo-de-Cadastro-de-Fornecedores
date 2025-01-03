@@ -4,10 +4,10 @@ public class AdmDTO {
     private String name;
     private String password;
 
-    public AdmDTO () {
+    public AdmDTO() {
     }
 
-    public AdmDTO (String name, String password) {
+    public AdmDTO(String name, String password) {
         this.name = name;
         this.password = password;
     }

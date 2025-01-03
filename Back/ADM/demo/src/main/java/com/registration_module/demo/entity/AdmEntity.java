@@ -22,10 +22,10 @@ public class AdmEntity {
     @Column(columnDefinition = "VARCHAR(16)", nullable = false)
     private String password;
 
-    public AdmEntity () {
+    public AdmEntity() {
     }
 
-    public AdmEntity (Long id, String name, String password) {
+    public AdmEntity(Long id, String name, String password) {
         this.id = id;
         this.name = name;
         this.password = password;
