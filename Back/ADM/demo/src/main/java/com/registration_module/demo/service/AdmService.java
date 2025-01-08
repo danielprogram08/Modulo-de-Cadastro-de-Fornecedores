@@ -20,21 +20,26 @@ public class AdmService {
     public Optional<AdmDTO> SearchByCredentials (String name, String password) { //Optional in case of the value be like empty;
         Optional<AdmDTO> result = Optional.ofNullable(repository.findByCredentials(name, password));
         if (!result.isPresent()) {
-            System.out.println("\n Administrador não encontrado!");
+            System.out.println("\n Administrator not found!");
         }
         return result;
     }
 
-    /*@Transactional //Transactional to write too;
-    public void replacePassword (AdmReplacePasswordDTO admReplacePassword) {
-        if (name == null || name.trim().isEmpty()) { //name null or empty;
-            throw new IllegalArgumentException("Name can not be null or empty."); //Exception to stop the logic. 
+    @Transactional //Transactional to write too;
+    public Boolean replacePassword (String name, String newPassword) {
+        if (name == null || name.trim().isEmpty()) {
+            System.out.println("\n Administrator`s name is incorrect!");
+            return false;
         }
-        int updatedRows = repository.replacePassword(name, newpassword);
+
+        int updatedRows = repository.replacePassword(name, newPassword);
+        
         if (updatedRows == 0) {
-            System.out.println("\n Administrator not found!");
+            System.out.println("\n password not edited!");
+            return false;
         } else {
-            System.out.println("\n Password updated with Sucess!");
+            System.out.println("\n password edited with sucess!");
         }
-    }*/
+        return true;
+    }
 }

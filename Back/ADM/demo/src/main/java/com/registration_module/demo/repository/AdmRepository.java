@@ -13,6 +13,6 @@ public interface AdmRepository extends JpaRepository<AdmEntity, Long> {
     AdmDTO findByCredentials(String name, String password);
 
     @Modifying // to use the method INSERT, UPDATE and DELETE in the query.
-    @Query(value = "UPDATE administrators a SET a.password = :newpassword WHERE a.name = :name", nativeQuery = true)
-    int replacePassword(@Param("name") String name, @Param("newpassword") String newpassword); //Param is to map the parameter in query.
+    @Query(value = "UPDATE administrators a SET a.password = :newPassword WHERE a.name = :name", nativeQuery = true)
+    int replacePassword(@Param("name") String name, @Param("newPassword") String newPassword);
 }
