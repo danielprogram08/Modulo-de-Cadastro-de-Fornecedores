@@ -22,9 +22,7 @@ function save() {
         spinner.classList.add('d-none');
         TitleBtn.textContent = '';
         btnSave.disabled = false;
-
     } else {
-
         spinner.classList.remove('d-none');
         TitleBtn.textContent = '';
         btnSave.disabled = true;
@@ -43,7 +41,7 @@ function save() {
             })
 
             .then(data => {
-                if (data.name == null || data.name != nameAdm) {
+                if (data == false) {
                     let alertAdm = document.createElement("div");
                     let container = document.querySelector(".container");
 
@@ -55,14 +53,30 @@ function save() {
                     document.body.appendChild(alertAdm);
                     document.body.insertBefore(alertAdm, document.body.firstChild);
 
+                    // Hide the loading spinner;
                     spinner.classList.add('d-none');
                     TitleBtn.textContent = 'Atualizar';
                     btnSave.disabled = false;
                     clear();
-                }
+                } else {
+                    // Sucess message;
+                    let alertSucess = document.createElement("div");
+                    let container = document.querySelector(".container");
+                    alertSucess.innerHTML =
+                        `<div style="position: fixed; top: 0; width: 100%; text-align: center;" class="alert alert-success" role="alert">
+                        𝐒𝐞𝐧𝐡𝐚 𝐚𝐭𝐮𝐚𝐥𝐢𝐳𝐚𝐝𝐚 𝐜𝐨𝐦 𝐬𝐮𝐜𝐞𝐬𝐬𝐨! ✔️
+                    </div>`
+                    container.style.marginTop = "20px";
+                    document.body.appendChild(alertSucess);
+                    document.body.insertBefore(alertSucess, document.body.firstChild);
 
-                clear();
-                window.location.href = "../index.html";
+                    setTimeout(redirection, 2000); //set time to redirection the page;
+                    clear();
+
+                    spinner.classList.add('d-none');
+                    TitleBtn.textContent = 'atualizar';
+                    btnSave.disabled = false;
+                }
             })
 
             .catch(error => {
@@ -88,4 +102,8 @@ function save() {
 function clear() {
     document.getElementById('name').value = "";
     document.getElementById('password').value = "";
+}
+
+function redirection() {
+    window.location.href = "../index.html";
 }

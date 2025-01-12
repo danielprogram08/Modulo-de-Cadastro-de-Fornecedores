@@ -1,3 +1,7 @@
+function replacePassword() {
+    window.location.href = "Replace_Password/index.html";
+}
+
 function login() {
     const name = document.getElementById('name').value;
     const password = document.getElementById('password').value;
@@ -42,7 +46,7 @@ function login() {
 
             // 2. Response and logic of the front;
             .then(data => {
-                if (data == null) {
+                if (data == null || data.name != name && data.password != password || data.name != name || data.password != password) {
                     let alertAdm = document.createElement("div");
                     let container = document.querySelector(".container");
 
@@ -53,20 +57,25 @@ function login() {
                     container.style.marginTop = "20px";
                     document.body.appendChild(alertAdm);
                     document.body.insertBefore(alertAdm, document.body.firstChild);
-                }
-                console.log(data);
-                let alertSucess = document.createElement("div");
-                let container = document.querySelector(".container");
-                alertSucess.innerHTML =
-                    `<div style="position: fixed; top: 0; width: 100%; text-align: center;" class="alert alert-success" role="alert">
+                } else {
+                    console.log(data);
+                    let alertSucess = document.createElement("div");
+                    let container = document.querySelector(".container");
+                    alertSucess.innerHTML =
+                        `<div style="position: fixed; top: 0; width: 100%; text-align: center;" class="alert alert-success" role="alert">
                         ✔️ 𝗕𝗲𝗺-𝗩𝗶𝗻𝗱𝗼!
                     </div>`
-                container.style.marginTop = "20px";
-                document.body.appendChild(alertSucess);
-                document.body.insertBefore(alertSucess, document.body.firstChild);
+                    container.style.marginTop = "20px";
+                    document.body.appendChild(alertSucess);
+                    document.body.insertBefore(alertSucess, document.body.firstChild);
 
+                    clear();
+                    // Hide the loading spinner;
+                    spinner.classList.add('d-none');
+                    TitleBtn.textContent = 'login';
+                    btnLogin.disabled = false;
+                }
                 clear();
-                // Hide the loading spinner;
                 spinner.classList.add('d-none');
                 TitleBtn.textContent = 'login';
                 btnLogin.disabled = false;

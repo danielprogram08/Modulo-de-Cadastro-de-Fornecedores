@@ -53,9 +53,13 @@ label {
     color: white;
     font-weight: bold;
     border: solid transparent;
-    margin: 10px;
+    margin: 20px;
 }
 
 #btn-save-password:hover {
     background-color: rgb(72, 72, 245);
+}
+
+#title-btn {
+    font-weight: bold;
 }
