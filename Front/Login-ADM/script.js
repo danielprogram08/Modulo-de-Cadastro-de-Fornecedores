@@ -2,7 +2,7 @@ function replacePassword() {
     window.location.href = "Replace_Password/index.html";
 }
 
-function login() {
+function btnLogin() {
     const name = document.getElementById('name').value;
     const password = document.getElementById('password').value;
     let spinner = document.getElementById('spinner');
@@ -69,7 +69,9 @@ function login() {
                     document.body.appendChild(alertSucess);
                     document.body.insertBefore(alertSucess, document.body.firstChild);
 
+                    setTimeout(login, 2000);
                     clear();
+
                     // Hide the loading spinner;
                     spinner.classList.add('d-none');
                     TitleBtn.textContent = 'login';
@@ -103,4 +105,8 @@ function login() {
 function clear() {
     document.getElementById('name').value = "";
     document.getElementById('password').value = "";
+}
+
+function login() {
+    window.location.href = "../Register_Supplier/index.html";
 }
