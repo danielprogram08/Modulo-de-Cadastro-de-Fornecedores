@@ -24,7 +24,7 @@ body {
 
 .column-main {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; 
     font-weight: bold;
 }
 
@@ -47,7 +47,7 @@ body {
 }
 
 #btn-search {
-    background-color: gray;
+    background-color: rgb(80, 80, 80);
 }
 
 #btn-search:hover {
