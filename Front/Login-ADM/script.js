@@ -14,7 +14,7 @@ function btnLogin() {
     TitleBtn.textContent = '';
     btnLogin.disabled = true;
 
-    if (name == "" && password == "" || name == "" || password == "") {
+    if (name == "" || password == "") {
         let alert = document.createElement("div");
         let container = document.querySelector(".container");
         alert.innerHTML =
@@ -39,7 +39,7 @@ function btnLogin() {
             // 1. Trying the request to Back-End; 
             .then(response => {
                 if (!response.ok) {
-                    throw new Error('Erro na requisição');
+                    throw new Error('Request Error!');
                 }
                 return response.json(); // Convert the response in json;
             })
@@ -52,19 +52,21 @@ function btnLogin() {
 
                     alertAdm.innerHTML =
                         `<div style="position: fixed; top: 0; width: 100%; text-align: center;" class="alert alert-danger" role="alert">
-                        𝗔𝗱𝗺𝗶𝗻𝗶𝘀𝘁𝗿𝗮𝗱𝗼𝗿 𝗻ã𝗼 𝗲𝗻𝗰𝗼𝗻𝘁𝗿𝗮𝗱𝗼!
-                    </div>`;
+                            𝗔𝗱𝗺𝗶𝗻𝗶𝘀𝘁𝗿𝗮𝗱𝗼𝗿 𝗻ã𝗼 𝗲𝗻𝗰𝗼𝗻𝘁𝗿𝗮𝗱𝗼!
+                        </div>`;
                     container.style.marginTop = "20px";
                     document.body.appendChild(alertAdm);
                     document.body.insertBefore(alertAdm, document.body.firstChild);
+
+                    setTimeout(reload, 2000);
+                    clear();
                 } else {
-                    console.log(data);
                     let alertSucess = document.createElement("div");
                     let container = document.querySelector(".container");
                     alertSucess.innerHTML =
                         `<div style="position: fixed; top: 0; width: 100%; text-align: center;" class="alert alert-success" role="alert">
-                        ✔️ 𝗕𝗲𝗺-𝗩𝗶𝗻𝗱𝗼!
-                    </div>`
+                            ✔️ 𝗕𝗲𝗺-𝗩𝗶𝗻𝗱𝗼!
+                        </div>`
                     container.style.marginTop = "20px";
                     document.body.appendChild(alertSucess);
                     document.body.insertBefore(alertSucess, document.body.firstChild);
@@ -109,4 +111,8 @@ function clear() {
 
 function login() {
     window.location.href = "../Register_Supplier/index.html";
+}
+
+function reload() {
+    window.location.reload();
 }
