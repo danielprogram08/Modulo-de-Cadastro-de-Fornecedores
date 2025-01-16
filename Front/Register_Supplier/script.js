@@ -6,7 +6,7 @@ function search() {
     const CnpjCpf = document.getElementById("CnpjCpf").value;
     const CorporateReason = document.getElementById("CorporateReason").value;
     const btnSearch = document.getElementById("btn-search");
-    const titleBtn = document.getElementById("title-btn");
+    const titleBtn = document.getElementById("title-btn-search");
     const spinner = document.getElementById("spinner");
 
     btnSearch.disabled = true;
@@ -26,6 +26,13 @@ function register() {
     const telephone = document.getElementById("telephone").value;
     const CnpjCpf = document.getElementById("CnpjCpf").value;
     const CorporateReason = document.getElementById("CorporateReason").value;
+    const btnRegister = document.getElementById("btn-register");
+    const titleBtn = document.getElementById("title-btn-register");
+    const spinner = document.getElementById("spinner");
+
+    btnRegister.disabled = true;
+    titleBtn.textContent = "";
+    spinner.classList.remove("d-none");
 
     if (name == "" || email == "" || address == "" || telephone == "" || CnpjCpf == "" || CorporateReason == "") {
         let alert = document.createElement("div");
@@ -38,8 +45,16 @@ function register() {
         container.style.marginTop = "40px";
         document.body.appendChild(alert);
         document.body.insertBefore(alert, document.body.firstChild);
+
+        btnRegister.disabled = false;
+        titleBtn.textContent = "Cadastrar";
+        spinner.classList.add("d-none");
         setTimeout(reload, 2000);
     } else {
+        btnRegister.disabled = true;
+        titleBtn.textContent = "";
+        spinner.classList.remove("d-none");
+
         fetch(`http://localhost:8080/Register/${name}/${email}/${address}/${telephone}/${CnpjCpf}/${CorporateReason}`)
 
             .then(reponse => {
@@ -61,6 +76,11 @@ function register() {
                 container.style.marginTop = "40px";
                 document.body.appendChild(alertSucess);
                 document.body.insertBefore(alertSucess, document.body.firstChild);
+
+                btnRegister.disabled = false;
+                titleBtn.textContent = "Cadastrar";
+                spinner.classList.add("d-none");
+
                 setTimeout(reload, 2000);
             })
 
@@ -70,12 +90,17 @@ function register() {
                 let container = document.querySelector(".container");
 
                 alert.innerHTML =
-                `<div style="position: fixed; top: 0; width: 100%; text-align: center;" class="alert alert-danger" role="alert">
+                    `<div style="position: fixed; top: 0; width: 100%; text-align: center;" class="alert alert-danger" role="alert">
                     𝐄𝐫𝐫𝐨 𝐚𝐨 𝐂𝐚𝐝𝐚𝐬𝐭𝐫𝐚𝐫 𝐅𝐨𝐫𝐧𝐞𝐜𝐞𝐝𝐨𝐫!
                 </div>`
                 container.style.marginTop = "40px";
                 document.body.appendChild(alert);
                 document.body.insertBefore(alert, document.body.firstChild);
+
+                btnRegister.disabled = false;
+                titleBtn.textContent = "Cadastrar";
+                spinner.classList.add("d-none");
+
                 setTimeout(reload, 2000);
             });
     }
