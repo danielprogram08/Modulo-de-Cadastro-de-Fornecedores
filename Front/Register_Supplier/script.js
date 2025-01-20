@@ -15,8 +15,39 @@ function search() {
 
     if (name == "" || email == "" || address == "" || telephone == "" || CnpjCpf == "" || CorporateReason == "") {
         window.location.href = "Search_Supplier/index.html"
-    } /*else if (name != "" || email != "" || address != "" || telephone != "" || CnpjCpf != "" || CorporateReason != "") {
-    }*/
+    } else if (name != "" || email != "" || address != "" || telephone != "" || CnpjCpf != "" || CorporateReason != "") {
+        fetch(`http://localhost:8080/Search/${name},${email},${address},${telephone},${CnpjCpf},${CorporateReason}`)
+
+            .then(reponse => {
+                if (!reponse.ok) {
+                    throw new Error("Request Error");
+                }
+            })
+
+            .then(data => {
+                console.log(data);
+                window.location.href = "Search_Supplier/index.html";
+            })
+            .catch(error => {
+            console.error("Erro: " + error);
+            let alert = document.createElement("div");
+            let container = document.querySelector(".container");
+
+            alert.innerHTML =
+            `<div style="position: fixed; top: 0; width: 100%; text-align: center;" class="alert alert-danger" role="alert">
+                𝗘𝗿𝗿𝗼 𝗮𝗼 𝗰𝗼𝗻𝘀𝘂𝗹𝘁𝗮𝗿 𝗳𝗼𝗿𝗻𝗲𝗰𝗲𝗱𝗼𝗿!
+            </div>`
+            container.style.marginTop = "40px";
+            document.body.appendChild(alert);
+            document.body.insertBefore(alert, document.body.firstChild);
+
+            btnSearch.disabled = false;
+            titleBtn.textContent = "Consultar";
+            spinner.classList.add("d-none");
+
+            setTimeout(reload, 2000);
+        })
+    }
 }
 
 function register() {
@@ -55,8 +86,12 @@ function register() {
         titleBtn.textContent = "";
         spinner.classList.remove("d-none");
 
-        fetch(`http://localhost:8080/Register/${name}/${email}/${address}/${telephone}/${CnpjCpf}/${CorporateReason}`)
-
+        fetch(`http://localhost:8080/Register/${name}/${email}/${address}/${telephone}/${CnpjCpf}/${CorporateReason}`, {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json'
+            }
+        })
             .then(reponse => {
                 if (!reponse.ok) {
                     throw new Error("Request Error!");
@@ -91,7 +126,7 @@ function register() {
 
                 alert.innerHTML =
                     `<div style="position: fixed; top: 0; width: 100%; text-align: center;" class="alert alert-danger" role="alert">
-                    𝐄𝐫𝐫𝐨 𝐚𝐨 𝐂𝐚𝐝𝐚𝐬𝐭𝐫𝐚𝐫 𝐅𝐨𝐫𝐧𝐞𝐜𝐞𝐝𝐨𝐫!
+                    𝗘𝗿𝗿𝗼 𝗮𝗼 𝗰𝗮𝗱𝗮𝘀𝘁𝗿𝗮𝗿 𝗳𝗼𝗿𝗻𝗲𝗰𝗲𝗱𝗼𝗿!
                 </div>`
                 container.style.marginTop = "40px";
                 document.body.appendChild(alert);
