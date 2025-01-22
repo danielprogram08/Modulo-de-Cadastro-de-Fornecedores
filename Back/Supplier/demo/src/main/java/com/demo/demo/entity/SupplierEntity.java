@@ -14,7 +14,7 @@ import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "suppliers")
-public class supplierEntity {
+public class SupplierEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,26 +41,26 @@ public class supplierEntity {
     @JsonProperty(access = Access.WRITE_ONLY)
     private String telephone;
 
-    @Column(name = "cnpjcpf", length = 14, unique = true)
+    @Column(name = "cnpj_cpf", length = 14, unique = true)
     @NotBlank
     @JsonProperty(access = Access.WRITE_ONLY)
-    private String cnpjcpf;
+    private String cnpjCpf; 
 
-    @Column(name = "corporatereason", length = 255)
+    @Column(name = "corporate_reason", length = 100)
     @NotBlank
-    @Size(min = 12, max = 255)
-    private String corporatereason;
+    @Size(min = 13, max = 100)
+    private String corporateReason; 
 
-    public supplierEntity() {}
+    public SupplierEntity() {}
 
-    public supplierEntity(Long id, String name, String email, String address, String telephone, String cnpjcpf, String corporatereason) {
+    public SupplierEntity(Long id, String name, String email, String address, String telephone, String cnpjCpf, String corporateReason) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.address = address;
         this.telephone = telephone;
-        this.cnpjcpf = cnpjcpf;
-        this.corporatereason = corporatereason;
+        this.cnpjCpf = cnpjCpf;
+        this.corporateReason = corporateReason;
     }
 
     public Long getId() {
@@ -104,19 +104,19 @@ public class supplierEntity {
     }
 
     public String getCnpjCpf() {
-        return cnpjcpf;
+        return cnpjCpf;
     }
 
-    public void setCnpjCpf(String cnpjcpf) {
-        this.cnpjcpf = cnpjcpf;
+    public void setCnpjCpf(String cnpjCpf) {
+        this.cnpjCpf = cnpjCpf;
     }
 
     public String getCorporateReason() {
-        return corporatereason;
+        return corporateReason;
     }
 
-    public void setCorporateReason(String corporatereason) {
-        this.corporatereason = corporatereason;
+    public void setCorporateReason(String corporateReason) {
+        this.corporateReason = corporateReason;
     }
 
     @Override
@@ -126,7 +126,7 @@ public class supplierEntity {
         result = prime * result + ((id == null) ? 0 : id.hashCode());
         result = prime * result + ((email == null) ? 0 : email.hashCode());
         result = prime * result + ((telephone == null) ? 0 : telephone.hashCode());
-        result = prime * result + ((cnpjcpf == null) ? 0 : cnpjcpf.hashCode());
+        result = prime * result + ((cnpjCpf == null) ? 0 : cnpjCpf.hashCode());
         return result;
     }
 
@@ -138,7 +138,7 @@ public class supplierEntity {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        supplierEntity other = (supplierEntity) obj;
+        SupplierEntity other = (SupplierEntity) obj;
         if (id == null) {
             if (other.id != null)
                 return false;
@@ -154,10 +154,10 @@ public class supplierEntity {
                 return false;
         } else if (!telephone.equals(other.telephone))
             return false;
-        if (cnpjcpf == null) {
-            if (other.cnpjcpf != null)
+        if (cnpjCpf == null) {
+            if (other.cnpjCpf != null)
                 return false;
-        } else if (!cnpjcpf.equals(other.cnpjcpf))
+        } else if (!cnpjCpf.equals(other.cnpjCpf))
             return false;
         return true;
     }

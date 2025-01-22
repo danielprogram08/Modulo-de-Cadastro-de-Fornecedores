@@ -1,1 +1,11 @@
-POST http://127.0.0.1:8080/Supplier/daniel-silva/danieldanielsilva@gmail.com/Rua-Diamante-986/85991850320/62613221399/Kumulus-tech
+POST http://localhost:8080/Supplier/Register
+Content-Type: application/json
+
+{
+    "name": "Daniel Silva",
+    "email": "danieldanielsilva08@gmail.com",
+    "address": "Rua Diamante, 986",
+    "telephone": "85991850320",
+    "cnpjCpf": "62613221399",
+    "corporateReason": "Kumulus Tech LTDA"
+}

@@ -86,11 +86,20 @@ function register() {
         titleBtn.textContent = "";
         spinner.classList.remove("d-none");
 
-        fetch(`http://localhost:8080/Register/${name}/${email}/${address}/${telephone}/${CnpjCpf}/${CorporateReason}`, {
+        fetch(`http://localhost:8080/Supplier/Register`, {
             method: 'POST',
             headers: {
+                'Accept': 'application/json',
                 'Content-type': 'application/json'
-            }
+            }, 
+            body: JSON.stringify ({
+                name: name.value,
+                email: email.value,
+                address: address.value,
+                telephone: telephone.value,
+                CnpjCpf: CnpjCpf.value,
+                CorporateReason: CorporateReason.value
+            })
         })
             .then(reponse => {
                 if (!reponse.ok) {
