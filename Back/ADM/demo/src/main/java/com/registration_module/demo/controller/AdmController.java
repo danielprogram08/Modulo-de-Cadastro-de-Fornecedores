@@ -19,7 +19,7 @@ public class AdmController {
     AdmService admService;
 
     @GetMapping(value = "/{name}/{password}")
-    public Optional<AdmDTO> SearchById(@PathVariable String name, @PathVariable String password) {
+    public Optional<AdmDTO> SearchById (@PathVariable String name, @PathVariable String password) {
         Optional<AdmDTO> result = admService.SearchByCredentials(name, password);
         return result;
     }

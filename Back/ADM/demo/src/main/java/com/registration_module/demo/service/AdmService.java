@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.registration_module.demo.dto.AdmDTO;
-//import com.registration_module.demo.dto.AdmReplacePasswordDTO;
 import com.registration_module.demo.repository.AdmRepository;
 
 @Service
