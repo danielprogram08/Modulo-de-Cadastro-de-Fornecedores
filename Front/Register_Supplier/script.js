@@ -131,9 +131,10 @@ function register() {
 
                 alert.innerHTML =
                     `<div style="position: fixed; top: 0; width: 100%; text-align: center;" class="alert alert-danger" role="alert">
-                    𝗘𝗿𝗿𝗼 𝗮𝗼 𝗰𝗮𝗱𝗮𝘀𝘁𝗿𝗮𝗿 𝗳𝗼𝗿𝗻𝗲𝗰𝗲𝗱𝗼𝗿!
+                    𝗘𝗿𝗿𝗼 𝗮𝗼 𝗰𝗮𝗱𝗮𝘀𝘁𝗿𝗮𝗿 𝗳𝗼𝗿𝗻𝗲𝗰𝗲𝗱𝗼𝗿!<br>
+                    Verifique se este fornecedor já foi cadastrado.
                 </div>`
-                container.style.marginTop = "40px";
+                container.style.marginTop = "90px";
                 document.body.appendChild(alert);
                 document.body.insertBefore(alert, document.body.firstChild);
 
