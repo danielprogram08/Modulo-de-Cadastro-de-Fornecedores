@@ -3,20 +3,20 @@ function search() {
     const email = document.getElementById("email").value;
     const address = document.getElementById("address").value;
     const telephone = document.getElementById("telephone").value;
-    const CnpjCpf = document.getElementById("CnpjCpf").value;
-    const CorporateReason = document.getElementById("CorporateReason").value;
+    const cnpjCpf = document.getElementById("CnpjCpf").value;
+    const corporateReason = document.getElementById("CorporateReason").value;
     const btnSearch = document.getElementById("btn-search");
     const titleBtn = document.getElementById("title-btn-search");
-    const spinner = document.getElementById("spinner");
+    const spinner = document.getElementById("spinner-search");
 
     btnSearch.disabled = true;
     titleBtn.textContent = "";
     spinner.classList.remove('d-none');
 
-    if (name == "" || email == "" || address == "" || telephone == "" || CnpjCpf == "" || CorporateReason == "") {
+    if (name == "" || email == "" || address == "" || telephone == "" || cnpjCpf == "" || corporateReason == "") {
         window.location.href = "Search_Supplier/index.html"
-    } else if (name != "" || email != "" || address != "" || telephone != "" || CnpjCpf != "" || CorporateReason != "") {
-        fetch(`http://localhost:8080/Search/${name},${email},${address},${telephone},${CnpjCpf},${CorporateReason}`)
+    } else if (name != "" || email != "" || address != "" || telephone != "" || cnpjCpf != "" || corporateReason != "") {
+        fetch(`http://localhost:8080/Search/${name},${email},${address},${telephone},${cnpjCpf},${corporateReason}`)
 
             .then(reponse => {
                 if (!reponse.ok) {
@@ -55,17 +55,17 @@ function register() {
     const email = document.getElementById("email").value;
     const address = document.getElementById("address").value;
     const telephone = document.getElementById("telephone").value;
-    const CnpjCpf = document.getElementById("CnpjCpf").value;
-    const CorporateReason = document.getElementById("CorporateReason").value;
+    const cnpjCpf = document.getElementById("CnpjCpf").value;
+    const corporateReason = document.getElementById("CorporateReason").value;
     const btnRegister = document.getElementById("btn-register");
     const titleBtn = document.getElementById("title-btn-register");
-    const spinner = document.getElementById("spinner");
+    const spinner = document.getElementById("spinner-register");
 
     btnRegister.disabled = true;
     titleBtn.textContent = "";
     spinner.classList.remove("d-none");
 
-    if (name == "" || email == "" || address == "" || telephone == "" || CnpjCpf == "" || CorporateReason == "") {
+    if (name == "" || email == "" || address == "" || telephone == "" || cnpjCpf == "" || corporateReason == "") {
         let alert = document.createElement("div");
         let container = document.querySelector(".container");
 
@@ -82,25 +82,21 @@ function register() {
         spinner.classList.add("d-none");
         setTimeout(reload, 2000);
     } else {
-        btnRegister.disabled = true;
-        titleBtn.textContent = "";
-        spinner.classList.remove("d-none");
-
         fetch(`http://localhost:8080/Supplier/Register`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
-                'Content-type': 'application/json'
+                'Content-Type': 'application/json'
             }, 
             body: JSON.stringify ({
-                name: name.value,
-                email: email.value,
-                address: address.value,
-                telephone: telephone.value,
-                CnpjCpf: CnpjCpf.value,
-                CorporateReason: CorporateReason.value
+                name: name,
+                email: email,
+                address: address,
+                telephone: telephone,
+                cnpjCpf: cnpjCpf,
+                corporateReason: corporateReason
             })
-        })
+        })      
             .then(reponse => {
                 if (!reponse.ok) {
                     throw new Error("Request Error!");

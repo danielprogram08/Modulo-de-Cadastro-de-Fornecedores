@@ -1,5 +1,7 @@
 package com.demo.demo.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,15 +18,15 @@ public class SupplierService {
 
     //Create Supplier;
     @Transactional
-    public SupplierDto CreateSupplier (SupplierEntity supplier) {
-        if (supplier == null) {
-            System.out.println("\n Supplier not register!");
-            return null;
+    public Optional<SupplierDto> CreateSupplier (SupplierEntity supplier) {
+        if (supplier.getName().isEmpty() || supplier.getEmail().isEmpty() || supplier.getAddress().isEmpty() || supplier.getTelephone().isEmpty() || supplier.getCnpjCpf().isEmpty() || supplier.getCorporateReason().isEmpty()) {
+            System.out.println("\n Supplier not register because is empty! \n");
+            return Optional.empty();
         } else {
-            System.out.println("\n Supplier created with sucess!");
+            SupplierEntity data = repository.save(supplier);
+            SupplierDto Supplier = new SupplierDto(data);
+            System.out.println("\n Supplier register with sucess! \n");
+            return Optional.ofNullable(Supplier);
         }
-        SupplierEntity data = repository.save(supplier);
-        SupplierDto Supplier = new SupplierDto(data);
-        return Supplier;
     }
 }

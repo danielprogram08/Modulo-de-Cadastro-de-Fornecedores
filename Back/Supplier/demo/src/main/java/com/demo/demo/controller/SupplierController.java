@@ -1,6 +1,10 @@
 package com.demo.demo.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,8 +24,12 @@ public class SupplierController {
     SupplierService service;
 
     @PostMapping(value = "/Register")
-    public SupplierDto CreateSupplier (@Valid @RequestBody SupplierEntity supplier) {
-        SupplierDto Supplier = service.CreateSupplier(supplier);
-        return Supplier;
+    public ResponseEntity<SupplierDto> CreateSupplier (@Valid @RequestBody SupplierEntity supplier) {
+        Optional<SupplierDto> Supplier = service.CreateSupplier(supplier);
+        if (Supplier.isPresent()) {
+            return ResponseEntity.ok(Supplier.get());
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
     }
 }

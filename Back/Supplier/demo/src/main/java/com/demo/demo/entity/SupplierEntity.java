@@ -36,7 +36,7 @@ public class SupplierEntity {
     @NotBlank
     private String address;
 
-    @Column(name = "telephone", length = 11, unique = true)
+    @Column(name = "telephone", length = 15, unique = true)
     @NotBlank
     @JsonProperty(access = Access.WRITE_ONLY)
     private String telephone;
