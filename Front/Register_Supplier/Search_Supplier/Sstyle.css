@@ -30,3 +30,13 @@ button {
 #Edit2-Button, #Delete2-Button {
     color: black;
 }
+
+#Edit2-Button:hover {
+    background-color: gray;
+    border-radius: 20px;
+}
+
+#Delete2-Button:hover {
+    background-color: rgb(255, 94, 94);
+    border-radius: 20px;
+}
