@@ -1,5 +1,6 @@
 import { showSpinnerLoadingRegister, hideSpinnerLoadingRegister } from "./Functions/Spinner_Loading/SpinnerScript.js";
 import { alertEmptyFields, alertSucessRegister, alertErrorRegister } from "./Functions/Alerts/AlertsScript.js";
+import { clearFields } from "./Functions/clearFields/clearFields.js";
 
 function register() {
 
@@ -45,12 +46,14 @@ function register() {
                 console.log(data);
                 alertSucessRegister();
                 hideSpinnerLoadingRegister();
+                clearFields();
             })
 
             .catch(error => {
                 console.log("Erro: " + error);
                 alertErrorRegister();
                 hideSpinnerLoadingRegister();
+                clearFields();
             });
     }
 }
