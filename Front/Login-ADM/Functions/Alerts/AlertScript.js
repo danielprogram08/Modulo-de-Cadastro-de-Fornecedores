@@ -18,14 +18,12 @@ export function alertEmptyFields() {
 
     setTimeout(() => {
         alert.style.top = "0";
-        container.style.marginTop = "40px";
     }, 10);
 
     setTimeout(() => {
         alert.style.top = "-50px";
         setTimeout(() => {
             alert.remove();
-            container.style.marginTop = "0";
         }, 500);
     }, 3000);
 }
@@ -50,14 +48,12 @@ export function alertSucessLogin() {
 
     setTimeout(() => {
         alertSucess.style.top = "0";
-        container.style.marginTop = "40px";
     }, 10);
 
     setTimeout(() => {
         alertSucess.style.top = "-50px";
         setTimeout(() => {
             alertSucess.remove();
-            container.style.marginTop = "0";
         }, 500);
     }, 3000);
 }
@@ -82,14 +78,12 @@ export function alertAdmNotFound() {
 
     setTimeout(() => {
         alert.style.top = "0";
-        container.style.marginTop = "40px";
     }, 10);
 
     setTimeout(() => {
         alert.style.top = "-50px";
         setTimeout(() => {
             alert.remove();
-            container.style.marginTop = "0";
         }, 500);
     }, 3000);
 }
@@ -114,14 +108,12 @@ export function alertErrorLogin() {
 
     setTimeout(() => {
         alert.style.top = "0";
-        container.style.marginTop = "40px";
     }, 10);
 
     setTimeout(() => {
         alert.style.top = "-50px";
         setTimeout(() => {
             alert.remove();
-            container.style.marginTop = "0";
         }, 500);
     }, 3000);
 }
