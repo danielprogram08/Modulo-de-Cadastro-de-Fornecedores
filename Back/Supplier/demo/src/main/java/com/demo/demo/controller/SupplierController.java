@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.demo.demo.Projection.SupplierProjection;
 import com.demo.demo.dto.SupplierDto;
 import com.demo.demo.entity.SupplierEntity;
 import com.demo.demo.service.SupplierService;
@@ -43,15 +45,9 @@ public class SupplierController {
         return data;
     }
 
-    @GetMapping(value = "/SearchById/{id}")
-    public Optional<SupplierDto> SearchById (@PathVariable Long id) {
-        Optional<SupplierDto> data = service.SearchById(id);
-        return data;
-    }
-
     @GetMapping(value = "/SearchByName/{name}")
-    public Optional<String> SearchByName (@PathVariable String name) {
-        Optional<String> data = service.SearchByName(name);
+    public Optional<SupplierProjection> SearchByName (@PathVariable String name) {
+        Optional<SupplierProjection> data = service.SearchByName(name);
         return data;
     }
 

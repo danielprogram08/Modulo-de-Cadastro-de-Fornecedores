@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.demo.demo.Projection.SupplierProjection;
 import com.demo.demo.dto.SupplierDto;
 import com.demo.demo.entity.SupplierEntity;
 import com.demo.demo.repository.SupplierRepository;
@@ -38,26 +40,14 @@ public class SupplierService {
         return data.stream().map(x -> new SupplierDto(x)).toList();
     }
 
-    //Search supplier by id;
-    @Transactional(readOnly = true)
-    public Optional<SupplierDto> SearchById (Long id) {
-        if (repository.existsById(id)) {
-            SupplierEntity data = repository.findById(id).get();
-            SupplierDto supplier = new SupplierDto(data);
-            return Optional.ofNullable(supplier);    
-        } else {
-            throw new RuntimeException("\n Supplier not exists! \n");
-        }
-    }
-
     //Search supplier by name;
     @Transactional(readOnly = true)
-    public Optional<String> SearchByName (String name) {
-        if (!repository.SearchByName(name).isEmpty()) {
-            String data = repository.SearchByName(name);
+    public Optional<SupplierProjection> SearchByName (String name) {
+        if (!name.isEmpty()) {
+            SupplierProjection data = repository.SearchByName(name);
             return Optional.ofNullable(data);    
         } else {
-            throw new RuntimeException("\n Supplier not exists! \n");   
+            throw new RuntimeException("\n Supplier not found \n");
         }
     }
 

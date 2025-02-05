@@ -1,6 +1,7 @@
-import { showSpinnerLoadingRegister, hideSpinnerLoadingRegister } from "./Functions/Spinner_Loading/SpinnerScript.js";
-import { alertEmptyFields, alertSucessRegister, alertErrorRegister } from "./Functions/Alerts/AlertsScript.js";
+import { showSpinnerLoadingRegister, hideSpinnerLoadingRegister, showSpinnerLoadingSearch, hideSpinnerLoadingSearch } from "./Functions/Spinner_Loading/SpinnerScript.js";
+import { alertEmptyFields, alertSucessRegister, alertErrorRegister, alertErrorSearch } from "./Functions/Alerts/AlertsScript.js";
 import { clearFields } from "./Functions/clearFields/clearFields.js";
+import { MenuSupplier } from "./Search_Supplier/script.js";
 
 function register() {
 
@@ -35,12 +36,7 @@ function register() {
                 corporateReason: corporateReason
             })
         })
-            .then(reponse => {
-                if (!reponse.ok) {
-                    throw new Error("Request Error!");
-                }
-                return reponse.json();
-            })
+            .then(reponse => reponse.json())
 
             .then(data => {
                 console.log(data);
@@ -58,4 +54,24 @@ function register() {
     }
 }
 
+function search() {
+
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const address = document.getElementById("address").value;
+    const telephone = document.getElementById("telephone").value;
+    const cnpjCpf = document.getElementById("CnpjCpf").value;
+    const corporateReason = document.getElementById("CorporateReason").value;
+
+    showSpinnerLoadingSearch();
+
+    if (name == "" || email == "" || address == "" || telephone == "" || cnpjCpf == "" || corporateReason == "") {  
+        hideSpinnerLoadingSearch();
+    } else if (name != "" || email != "" || address != "" || telephone != "" || cnpjCpf != "" || corporateReason != "") {
+        hideSpinnerLoadingSearch();
+        MenuSupplier(name);
+    }
+}
+
+window.search = search;
 window.register = register;
