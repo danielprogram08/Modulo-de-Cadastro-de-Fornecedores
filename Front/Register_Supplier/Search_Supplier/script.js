@@ -51,19 +51,19 @@ export function MenuSupplier(name) {
       let tbody = document.querySelector("#table-body");
       let rows = '';
   
-      let bgColor = id % 2 === 0 ? 'background-color: rgb(29, 172, 255);' : '';
+      let bgColor = id % 2 == 1 ? 'background-color: rgb(29, 172, 255); color: white' : '';
           
           rows += `
             <tr class="supplier-row">
-              <td style="${bgColor}" id="supplier-id">${id}</td>
-              <td style="${bgColor}" id="supplier-name">${name}</td>
-              <td style="${bgColor}" id="supplier-email">${email}</td>
-              <td style="${bgColor}" id="supplier-address">${address}</td>
-              <td style="${bgColor}" id="supplier-telephone">${telephone}</td>
-              <td style="${bgColor}" id="supplier-cnpjCpf">${cnpjCpf}</td>
-              <td style="${bgColor}" id="supplier-corporateReason">${corporateReason}</td>
-              <td><button id="Edit-Button" onclick="EditFields()">🖋️​ EDITAR</button></td>
-              <td><button id="Delete-Button">❌​ DELETAR</button></td>
+              <td style="${bgColor}; font-weight: bold;" id="supplier-id">${id}</td>
+              <td style="${bgColor}; font-weight: bold;" id="supplier-name">${name}</td>
+              <td style="${bgColor}; font-weight: bold;" id="supplier-email">${email}</td>
+              <td style="${bgColor}; font-weight: bold;" id="supplier-address">${address}</td>
+              <td style="${bgColor}; font-weight: bold;" id="supplier-telephone">${telephone}</td>
+              <td style="${bgColor}; font-weight: bold;" id="supplier-cnpjCpf">${cnpjCpf}</td>
+              <td style="${bgColor}; font-weight: bold;" id="supplier-corporateReason">${corporateReason}</td>
+              <td style="${bgColor}; font-weight: bold;" ><button id="Edit-Button" onclick="EditFields(${id})">🖋️​ EDITAR</button></td>
+              <td style="${bgColor}; font-weight: bold;" ><button id="Delete-Button">❌​ DELETAR</button></td>
             </tr>`;
   
       tbody.innerHTML = rows;

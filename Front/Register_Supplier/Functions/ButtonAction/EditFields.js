@@ -1,6 +1,6 @@
 import { alertEmptyFields, alertErrorRegister, alertSucessRegister } from "../Alerts/AlertsScript.js";
 
-export function EditFields() {
+export function EditFields(id) {
     let body = document.querySelector("body");
 
     let table = `
@@ -21,7 +21,7 @@ export function EditFields() {
             </thead>
             <tbody id="table-body">
               <tr class="supplier-row">
-                <td></td>
+                <td id="supplier-id">${id}</td>
                 <td><input id="input-name" class="form-control"></td>
                 <td><input id="input-email" class="form-control"></td>
                 <td><input id="input-address" class="form-control"></td>
@@ -41,7 +41,7 @@ export function EditFields() {
     let tbody = document.querySelector("#table-body");
 
     tbody.addEventListener("keydown", function(event) {
-        if (event.key === "Enter") {
+        if (event.key == "Enter") {
             event.preventDefault();
 
             let newName = document.getElementById("input-name").value;
@@ -63,20 +63,22 @@ export function EditFields() {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    newName: newName,
-                    newEmail: newEmail,
-                    newAddress: newAddress,
-                    newTelephone: newTelephone,
-                    newCnpjCpf: newCnpjCpf,
-                    newCorporateReason: newCorporateReason
+                    id: id,
+                    name: newName,
+                    email: newEmail,
+                    address: newAddress,
+                    telephone: newTelephone,
+                    cnpjCpf: newCnpjCpf,
+                    corporateReason: newCorporateReason
                 })
             })
             .then(response => {
                 if (!response.ok) {
                     throw new Error("Erro ao atualizar fornecedor");
+                } else {
+                  alertSucessRegister();
+                  reload();
                 }
-                //alertSucessRegister();
-                //reload();
             })
             .catch(() => alertErrorRegister());
         }
@@ -86,5 +88,5 @@ export function EditFields() {
 function reload() {
     setTimeout(() => {
         window.location.reload();
-    }, 3000);
+    }, 5000);
 }
