@@ -1,7 +1,8 @@
 import { showSpinnerLoadingRegister, hideSpinnerLoadingRegister, showSpinnerLoadingSearch, hideSpinnerLoadingSearch } from "./Functions/Spinner_Loading/SpinnerScript.js";
-import { alertEmptyFields, alertSucessRegister, alertErrorRegister, alertErrorSearch } from "./Functions/Alerts/AlertsScript.js";
+import { alertEmptyFields, alertSucessRegister, alertErrorRegister } from "./Functions/Alerts/AlertsScript.js";
 import { clearFields } from "./Functions/clearFields/clearFields.js";
 import { MenuSupplier } from "./Search_Supplier/script.js";
+import { MenuAllSupplier } from "./Search_Supplier/SearchAllSupplier/script.js";
 
 function register() {
 
@@ -36,7 +37,12 @@ function register() {
                 corporateReason: corporateReason
             })
         })
-            .then(reponse => reponse.json())
+            .then(reponse => {
+                if (!reponse.ok) {
+                    throw new Error("Erro: " + Error);
+                }
+                reponse => reponse.json();
+            })
 
             .then(data => {
                 console.log(data);
@@ -67,6 +73,8 @@ function search() {
 
     if (name == "" || email == "" || address == "" || telephone == "" || cnpjCpf == "" || corporateReason == "") {  
         hideSpinnerLoadingSearch();
+        MenuAllSupplier();
+
     } else if (name != "" || email != "" || address != "" || telephone != "" || cnpjCpf != "" || corporateReason != "") {
         hideSpinnerLoadingSearch();
         MenuSupplier(name);

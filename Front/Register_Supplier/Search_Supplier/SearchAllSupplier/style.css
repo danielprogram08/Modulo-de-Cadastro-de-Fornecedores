@@ -1,0 +1,39 @@
+.main {
+    height: 100vh;
+    width: 100%;
+    text-align: center;
+}
+
+#Head-Table {
+    background-color: rgb(80, 80, 80);
+    font-weight: bold;
+    color: white;
+    top: fixed;
+}
+
+#Edit-Button {
+    background-color: rgb(88, 188, 255);
+    color: white;
+}
+
+#Delete-Button {
+    background-color: rgb(255, 94, 94);
+}
+
+#Edit-Button, #Delete-Button {
+    color: black;
+    border-radius: 20px;
+}
+
+#Edit-Button:hover, #Delete-Button:hover {
+    border-radius: 20px;
+    color: white;
+}
+
+#Edit-Button:hover {
+    background-color: rgb(47, 0, 255);
+}
+
+#Delete-Button:hover {
+    background-color: rgb(161, 51, 51);
+}

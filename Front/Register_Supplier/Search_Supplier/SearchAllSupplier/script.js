@@ -1,26 +1,19 @@
-import { alertErrorSearch } from "../Functions/Alerts/AlertsScript.js";
-import { EditFields } from "../Functions/ButtonAction/EditFields.js";
+import { alertErrorSearch } from "../../Functions/Alerts/AlertsScript.js";
+import { EditFields } from "../../Functions/ButtonAction/EditFields.js";
 
-export function MenuSupplier(name) {
+export function MenuAllSupplier() {
 
-    fetch(`http://localhost:8080/Supplier/SearchByName/${name}`)
+    fetch(`http://localhost:8080/Supplier/SearchAll`)
 
     .then(response => response.json())
 
     .then(supplier => {
       if (supplier == null) {
+
         alertErrorSearch();
         console.log(supplier);
-    } else {
-      console.log(supplier);
 
-      let id = supplier.id;
-      let name = supplier.name;
-      let email = supplier.email;
-      let address = supplier.address;
-      let telephone = supplier.telephone;
-      let cnpjCpf = supplier.cnpjCpf;
-      let corporateReason = supplier.corporateReason;
+    } else {
 
       let body = document.querySelector("body");
       body.innerHTML = '';
@@ -51,10 +44,21 @@ export function MenuSupplier(name) {
   
       let tbody = document.querySelector("#table-body");
       let rows = '';
-  
-      let bgColor = id % 2 == 1 ? 'background-color: rgb(29, 172, 255); color: white' : '';
           
-          rows += `
+        supplier.forEach(suppliers => {
+            console.log(supplier);
+            
+            let id = suppliers.id;
+            let name = suppliers.name;
+            let email = suppliers.email;
+            let address = suppliers.address;
+            let telephone = suppliers.telephone;
+            let cnpjCpf = suppliers.cnpjCpf;
+            let corporateReason = suppliers.corporateReason;
+
+            let bgColor = id % 2 == 1 ? 'background-color: rgb(29, 172, 255); color: white' : '';
+
+            rows += `
             <tr class="supplier-row">
               <td style="${bgColor}; font-weight: bold;" id="supplier-id">${id}</td>
               <td style="${bgColor}; font-weight: bold;" id="supplier-name">${name}</td>
@@ -65,7 +69,8 @@ export function MenuSupplier(name) {
               <td style="${bgColor}; font-weight: bold;" id="supplier-corporateReason">${corporateReason}</td>
               <td style="${bgColor}; font-weight: bold;" ><button id="Edit-Button" onclick="EditFields(${id})">🖋️​ EDITAR</button></td>
               <td style="${bgColor}; font-weight: bold;" ><button id="Delete-Button">❌​ DELETAR</button></td>
-            </tr>`;
+            </tr>`;            
+        });
   
       tbody.innerHTML = rows;
           
