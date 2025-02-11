@@ -11,29 +11,25 @@
     top: fixed;
 }
 
-#Edit-Button {
-    background-color: rgb(88, 188, 255);
-    color: white;
-}
-
-#Delete-Button {
-    background-color: rgb(255, 94, 94);
-}
-
 #Edit-Button, #Delete-Button {
     color: black;
     border-radius: 20px;
+    border: none;
+    font-weight: bold;
 }
 
-#Edit-Button:hover, #Delete-Button:hover {
-    border-radius: 20px;
+#Delete-Button {
+    background-color: red;
     color: white;
 }
 
 #Edit-Button:hover {
-    background-color: rgb(47, 0, 255);
+    border-radius: 20px;
+    border: none;
+    color: white;
+    background-color: rgb(160, 160, 160);
 }
 
 #Delete-Button:hover {
-    background-color: rgb(161, 51, 51);
+    background-color: rgb(216, 17, 17);
 }

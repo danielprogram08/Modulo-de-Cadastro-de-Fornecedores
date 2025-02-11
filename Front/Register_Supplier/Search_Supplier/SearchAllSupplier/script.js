@@ -1,5 +1,6 @@
 import { alertErrorSearch } from "../../Functions/Alerts/AlertsScript.js";
 import { EditFields } from "../../Functions/ButtonAction/EditFields.js";
+import { DeleteSupplier } from "../../Functions/ButtonAction/DeleteSupplier.js";
 
 export function MenuAllSupplier() {
 
@@ -57,6 +58,7 @@ export function MenuAllSupplier() {
             let corporateReason = suppliers.corporateReason;
 
             let bgColor = id % 2 == 1 ? 'background-color: rgb(29, 172, 255); color: white' : '';
+            let btColor = id % 2 == 0 ? 'background-color: rgb(216, 216, 216);' : '';
 
             rows += `
             <tr class="supplier-row">
@@ -67,8 +69,8 @@ export function MenuAllSupplier() {
               <td style="${bgColor}; font-weight: bold;" id="supplier-telephone">${telephone}</td>
               <td style="${bgColor}; font-weight: bold;" id="supplier-cnpjCpf">${cnpjCpf}</td>
               <td style="${bgColor}; font-weight: bold;" id="supplier-corporateReason">${corporateReason}</td>
-              <td style="${bgColor}; font-weight: bold;" ><button id="Edit-Button" onclick="EditFields(${id})">🖋️​ EDITAR</button></td>
-              <td style="${bgColor}; font-weight: bold;" ><button id="Delete-Button">❌​ DELETAR</button></td>
+              <td style="${bgColor}; font-weight: bold;" ><button style="${btColor}" class="btn btn-light" id="Edit-Button" onclick="EditFields(${id})">🖋️​ EDITAR</button></td>
+              <td style="${bgColor}; font-weight: bold;" ><button class="btn btn-danger" id="Delete-Button" onclick="DeleteSupplier(${id})">❌ DELETAR</button></td>
             </tr>`;            
         });
   
@@ -88,3 +90,4 @@ export function MenuAllSupplier() {
 
   window.EditFields = EditFields;
   window.Return = Return;
+  window.DeleteSupplier = DeleteSupplier;

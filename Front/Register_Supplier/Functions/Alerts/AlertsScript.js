@@ -66,6 +66,39 @@ export function alertSucessRegister() {
     }, 3000);
 }
 
+export function alertSucessDelete() {
+    let alertSucess = document.createElement("div");
+    let container = document.querySelector(".container");
+
+    alertSucess.className = "alert alert-success";
+    alertSucess.role = "alert";
+    alertSucess.style.cssText = `
+        position: fixed;
+        top: -50px;
+        width: 100%;
+        text-align: center;
+        transition: top 0.5s ease-in, top 0.5s ease-out;
+    `;
+    alertSucess.innerHTML =
+        `𝗙𝗼𝗿𝗻𝗲𝗰𝗲𝗱𝗼𝗿 𝗱𝗲𝗹𝗲𝘁𝗮𝗱𝗼 𝗰𝗼𝗺 𝘀𝘂𝗰𝗲𝘀𝘀𝗼!<br>
+         A página será recarregada daqui em poucos segundos`
+    
+    document.body.insertBefore(alertSucess, document.body.firstChild);
+
+    setTimeout(() => {
+        alertSucess.style.top = "0";
+        container.style.marginTop = "40px";
+    }, 10);
+
+    setTimeout(() => {
+        alertSucess.style.top = "-50px";
+        setTimeout(() => {
+            alertSucess.remove();
+            container.style.marginTop = "0";
+        }, 500);
+    }, 3000);
+}
+
 // Alert to Empty Fields;
 export function alertEmptyFields() {
     let alert = document.createElement("div");

@@ -1,5 +1,6 @@
 import { alertErrorSearch } from "../Functions/Alerts/AlertsScript.js";
 import { EditFields } from "../Functions/ButtonAction/EditFields.js";
+import { DeleteSupplier } from "../Functions/ButtonAction/DeleteSupplier.js";
 
 export function MenuSupplier(name) {
 
@@ -9,10 +10,10 @@ export function MenuSupplier(name) {
 
     .then(supplier => {
       if (supplier == null) {
+
         alertErrorSearch();
-        console.log(supplier);
+        
     } else {
-      console.log(supplier);
 
       let id = supplier.id;
       let name = supplier.name;
@@ -63,8 +64,8 @@ export function MenuSupplier(name) {
               <td style="${bgColor}; font-weight: bold;" id="supplier-telephone">${telephone}</td>
               <td style="${bgColor}; font-weight: bold;" id="supplier-cnpjCpf">${cnpjCpf}</td>
               <td style="${bgColor}; font-weight: bold;" id="supplier-corporateReason">${corporateReason}</td>
-              <td style="${bgColor}; font-weight: bold;" ><button id="Edit-Button" onclick="EditFields(${id})">🖋️​ EDITAR</button></td>
-              <td style="${bgColor}; font-weight: bold;" ><button id="Delete-Button">❌​ DELETAR</button></td>
+              <td style="${bgColor}; font-weight: bold;" ><button class="btn btn-light" id="Edit-Button" onclick="EditFields(${id})">🖋️​ EDITAR</button></td>
+              <td style="${bgColor}; font-weight: bold;" ><button class="btn btn-danger" id="Delete-Button" onclick="DeleteSupplier(${id})">❌​ DELETAR</button></td>
             </tr>`;
   
       tbody.innerHTML = rows;
@@ -83,3 +84,4 @@ export function MenuSupplier(name) {
 
   window.EditFields = EditFields;
   window.Return = Return;
+  window.AlertDeleteSupplier = DeleteSupplier;
