@@ -3,11 +3,11 @@
 
 //{   
     //"name": "Daniel Silva",
-    //"email": "danieldanielsilva08@gmail.com",
-    //"address": "Rua Diamante, 986",
-    //"telephone": "(85) 991850-320",
-    //"cnpjCpf": "626.132.213-99",
-    //"corporateReason": "TOTVS THECNOLOGYCAL CORPORATION"
+    //"email": "danieldanielsilva@gmail.com",
+    //"address": "Rua Conselheiro dos Santos, 2095",
+    //"telephone": "(85) 99999-9999",
+    //"cnpjCpf": "999.999.999-99",
+    //"corporateReason": "INVENTUS THECNOLOGYCAL CORPORATION"
 //}
 
 //PUT http://localhost:8080/Supplier/Edit
@@ -16,10 +16,10 @@
 //{   
     //"id": 29,
     //"name": "Daniel Silva",
-    //"email": "danieldanielsilva08@gmail.com",
-    //"address": "Rua Diamante, 986",
-    //"telephone": "(85) 991850-320",
-    //"cnpjCpf": "626.132.213-99",
+    //"email": "danielsilva@gmail.com",
+    //"address": "Rua Guaraniaba, 562",
+    //"telephone": "(85) 98888-8888",
+    //"cnpjCpf": "999.999.999-99",
     //"corporateReason": "TOTVS THECNOLOGYCAL CORPORATION"
 //}
 
