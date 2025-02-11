@@ -21,15 +21,14 @@ function btnLogin() {
     showSpinnerLoading();
 
     fetch(`http://localhost:8080/Administrator/${name}/${password}`)
-        // 1. Trying the request to Back-End; 
+         
         .then(response => {
             if (!response.ok) {
                 throw new Error('Request Error!');
             }
-            return response.json(); // Convert the response in json;
+            return response.json();
         })
 
-        // 2. Response and logic of the front;
         .then(data => {
             if (data == null || data.name != name && data.password != password || data.name != name || data.password != password) {
                 alertAdmNotFound();
@@ -39,6 +38,7 @@ function btnLogin() {
                 alertSucessLogin();
                 clear();
                 hideSpinnerLoading();
+                login();
             }
         })
         .catch(error => {

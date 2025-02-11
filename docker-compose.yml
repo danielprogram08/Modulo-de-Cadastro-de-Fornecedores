@@ -1,6 +1,8 @@
 version: '3.7'
-services:
+networks:
+  network-aplication:
 
+services:
   db-adm:
     image: mysql:8.0
     container_name: 'mysql-adm'
@@ -10,13 +12,17 @@ services:
       - /MysqlAdministrator/data:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: 345678
-  
+    networks:
+      - network-aplication
+
   db-supplier:
     image: mysql:8.0
     container_name: 'mysql-supplier'
     ports:
-      - 3303:3306
+      - 3306:3306
     volumes:
       - /MysqlSupplier/data:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: 1234
+    networks:
+      - network-aplication
