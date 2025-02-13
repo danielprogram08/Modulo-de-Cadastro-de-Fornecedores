@@ -1,0 +1,12 @@
+CREATE DATABASE IF NOT EXISTS SupplierDatabase;
+USE SupplierDatabase;
+
+CREATE TABLE IF NOT EXISTS suppliers (
+    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    address VARCHAR(255) NOT NULL,
+    telephone VARCHAR(15) NOT NULL UNIQUE,
+    cnpj_cpf VARCHAR(14) NOT NULL UNIQUE,
+    corporate_reason VARCHAR(100) NOT NULL
+);

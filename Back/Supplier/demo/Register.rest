@@ -1,4 +1,4 @@
-//POST http://localhost:8080/Supplier/Register
+//POST http://localhost:8081/Supplier/Register
 //Content-Type: application/json
 
 //{   
@@ -10,7 +10,7 @@
     //"corporateReason": "INVENTUS THECNOLOGYCAL CORPORATION"
 //}
 
-//PUT http://localhost:8080/Supplier/Edit
+//PUT http://localhost:8081/Supplier/Edit
 //Content-Type: application/json
 
 //{   
@@ -23,8 +23,8 @@
     //"corporateReason": "TOTVS THECNOLOGYCAL CORPORATION"
 //}
 
-//GET http://localhost:8080/Supplier/SearchAll
-//GET http://localhost:8080/Supplier/SearchByName/Daniel
-//GET http://localhost:8080/Supplier/SearchById/29
+//GET http://localhost:8081/Supplier/SearchAll
+//GET http://localhost:8081/Supplier/SearchByName/Daniel
+//GET http://localhost:8081/Supplier/SearchById/29
 
-//DELETE http://localhost:8080/Supplier/DeleteById/32
+//DELETE http://localhost:8081/Supplier/DeleteById/32
