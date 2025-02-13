@@ -29,7 +29,7 @@ export function DeleteSupplier(id) {
     }, 100);
 
     function ConfirmAction(id) {
-        fetch(`http://localhost:8080/Supplier/DeleteById/${id}`, {
+        fetch(`http://localhost:8081/Supplier/DeleteById/${id}`, {
             method: 'DELETE',})
             .then(response => {
                 if (!response.ok) {

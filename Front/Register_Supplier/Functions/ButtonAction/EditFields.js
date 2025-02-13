@@ -56,7 +56,7 @@ export function EditFields(id) {
                 return;
             }
 
-            fetch(`http://localhost:8080/Supplier/Edit`, {
+            fetch(`http://localhost:8081/Supplier/Edit`, {
                 method: 'PUT',
                 headers: {
                     'Accept': 'application/json',

@@ -4,7 +4,7 @@ import { DeleteSupplier } from "../../Functions/ButtonAction/DeleteSupplier.js";
 
 export function MenuAllSupplier() {
 
-    fetch(`http://localhost:8080/Supplier/SearchAll`)
+    fetch(`http://localhost:8081/Supplier/SearchAll`)
 
     .then(response => response.json())
 

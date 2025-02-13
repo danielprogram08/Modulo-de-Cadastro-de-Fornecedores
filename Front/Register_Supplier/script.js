@@ -22,7 +22,7 @@ function register() {
 
     } else {
 
-        fetch(`http://localhost:8080/Supplier/Register`, {
+        fetch(`http://localhost:8081/Supplier/Register`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
