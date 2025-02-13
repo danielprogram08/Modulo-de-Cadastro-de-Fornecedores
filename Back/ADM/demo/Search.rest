@@ -1,5 +1,5 @@
 //Search:
-//GET http://127.0.0.1:8080/Administrator/Daniel-Silva/daniel1234
+//GET http://127.0.0.1:8080/Administrator/Daniel/daniel1234
 
 //Modify:
-//PUT http://127.0.0.1:8080/Administrator/Daniel-Silva/daniel1234
+//PUT http://127.0.0.1:8080/Administrator/Daniel/daniel1234
