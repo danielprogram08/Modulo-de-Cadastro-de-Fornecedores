@@ -7,10 +7,10 @@ services:
     restart: always
     ports:
       - 3305:3306
-    volumes:
-      - mysql-adm-data:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: 345678
+    volumes:
+      - ./schema.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
       - network-aplication
 
@@ -33,7 +33,3 @@ services:
 
 networks:
   network-aplication:
-
-volumes:
-  mysql-adm-data:
-    driver: local
