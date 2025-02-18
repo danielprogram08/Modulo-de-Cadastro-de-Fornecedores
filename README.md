@@ -65,11 +65,18 @@ Para consultar apenas um único fornecedor, o Administrador terá que preencher 
 Nesta seção, ao clicar no botão **"EDITAR"**, o Administrador só poderá sair desta opção caso preencher todos os campos, no entanto, é necessário bastante atenção para não clicar inconcientemente. Em caso de não preencher todos os dados, o sistema fará uma verificação e exibirá um alerta para preenchimento de todos os campos. Logo após preencher todos os campos corretamente, clicando na tecla "ENTER" do computador, o Administrador terá editado o fornecedor com sucesso e será redirecionado a página principal do Sistema.
 Ao clicar no botão **"DELETAR"**, o Sistema exibirá uma notificação para a confirmação de exclusão do fornecedor, caso o Administrador clique **"Sim"** para excluir, o Sistema exluirá instantaneamente e redirecionará para a página principal. Ao clicar **"Não"**, o Administrador cancelará o processo de exclusão do fornecedor e a notificação será removida da página.
 
+
 ## Tecnologias Utilizadas:
 
-- JAVA **(Linguagem)**
+- HTML, CSS **(Apresentação)**
 
-- SPRING **(FrameWork)**
+- JAVASCRIPT **(Linguagem Front-End)**
+
+- BOOTSTRAP **(Framework Front-End)**
+
+- JAVA **(Linguagem Back-End)**
+
+- SPRING **(FrameWork Back-End)**
 
 - DOCKER **(Ambiente)**
 
@@ -77,7 +84,20 @@ Ao clicar no botão **"DELETAR"**, o Sistema exibirá uma notificação para a c
 
 - MYSQL **(Banco de Dados 'Homologação')**
 
-- GIT, GITHUB **(Versionamento de Código)**
+- GIT, GITHUB **(Versionamento de Código)**<br>
+
+<br><p>
+  <img src="https://user-images.githubusercontent.com/25181517/183898054-b3d693d4-dafb-4808-a509-bab54cf5de34.png" alt="BOOTSTRAP" width="40" style="margin: 0 50px;">
+  <img src="https://user-images.githubusercontent.com/25181517/192158954-f88b5814-d510-4564-b285-dff7d6400dad.png" alt="HTML" width="40" style="margin: 0 50px;">
+  <img src="https://user-images.githubusercontent.com/25181517/183898674-75a4a1b1-f960-4ea9-abcb-637170a00a75.png" alt="CSS" width="40" style="margin: 0 50px;">
+  <img src="https://user-images.githubusercontent.com/25181517/117447155-6a868a00-af3d-11eb-9cfe-245df15c9f3f.png" alt="JS" width="40" style="margin: 0 50px;">
+  <img src="https://user-images.githubusercontent.com/25181517/117201156-9a724800-adec-11eb-9a9d-3cd0f67da4bc.png" alt="JAVA" width="40" style="margin: 0 50px;">
+  <img src="https://user-images.githubusercontent.com/25181517/183891303-41f257f8-6b3d-487c-aa56-c497b880d0fb.png" alt="SPRING-BOOT" width="40" style="margin: 0 50px;">
+  <img src="https://user-images.githubusercontent.com/25181517/183896128-ec99105a-ec1a-4d85-b08b-1aa1620b2046.png" alt="MYSQL" width="40" style="margin: 0 50px;">
+  <img src="https://user-images.githubusercontent.com/25181517/192108372-f71d70ac-7ae6-4c0d-8395-51d8870c2ef0.png" alt="GIT" width="40" style="margin: 0 50px;">
+  <img src="https://user-images.githubusercontent.com/25181517/117207330-263ba280-adf4-11eb-9b97-0ac5b40bc3be.png" alt="DOCKER" width="40" style="margin: 0 50px;">
+  <img src="https://user-images.githubusercontent.com/25181517/192108891-d86b6220-e232-423a-bf5f-90903e6887c3.png" alt="VSCODE" width="40" style="margin: 0 50px;">
+</p><br>
 
 ## Autor
 
