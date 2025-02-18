@@ -1,6 +1,6 @@
 # Sistema de Cadastro de Fornecedores + Autenticação de Administrador
 
-Este projeto trata-se de uma aplicação full-stack completa voltada para o gerenciamento de fornecedores. Ele permite cadastrar novos fornecedores, editá-los e excluí-los de forma eficiente, além de contar com as validações de segurança em prol das ações do administrador e interágir de maneira eficiente e fácil com o mesmo, oferecendo uma estrutura flexível para que os administradores possam gerenciar todos os fornecedores de acordo com suas necessidades.
+Este projeto trata-se de uma aplicação full-stack completa voltada para o gerenciamento de fornecedores. Ele permite cadastrar novos fornecedores, editá-los e excluí-los de forma eficiente, além de contar com as validações de segurança em prol das ações do administrador e interagir de maneira eficiente e fácil com o mesmo, oferecendo uma estrutura flexível para que os administradores possam gerenciar todos os fornecedores de acordo com suas necessidades.
 
 ## Modelo de domínio do Sistema
 
