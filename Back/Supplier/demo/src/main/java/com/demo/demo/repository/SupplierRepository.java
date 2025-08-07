@@ -6,11 +6,11 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import com.demo.demo.Domain.Supplier;
 import com.demo.demo.Projection.SupplierProjection;
-import com.demo.demo.entity.SupplierEntity;
 
 @Repository
-public interface SupplierRepository extends JpaRepository<SupplierEntity, Long>{
+public interface SupplierRepository extends JpaRepository<Supplier, Long>{
 
     //Search by name;
     @Query(value = "SELECT * FROM suppliers WHERE LOWER(name) LIKE LOWER(CONCAT('%', :name ,'%'))", nativeQuery = true)

@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.demo.demo.Domain.SupplierDto;
+import com.demo.demo.Domain.SupplierEntity;
 import com.demo.demo.Projection.SupplierProjection;
-import com.demo.demo.dto.SupplierDto;
-import com.demo.demo.entity.SupplierEntity;
 import com.demo.demo.service.SupplierService;
 
 import jakarta.validation.Valid;

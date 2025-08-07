@@ -11,25 +11,3 @@ services:
       MYSQL_ROOT_PASSWORD: 1234
     volumes:
       - ./schema.sql:/docker-entrypoint-initdb.d/init.sql
-    networks:
-      - network-aplication
-
-  app-suppliers:
-    build: .
-    image: app-suppliers:1.0
-    container_name: 'aplication-suppliers'
-    restart: always
-    depends_on:
-      - db-supplier
-    environment:
-      SPRING_DATASOURCE_URL: "jdbc:mysql://db-supplier:3306/SupplierDatabase?useTimezone=true&serverTimezone=UTC"
-      SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: '1234'
-      SPRING_JPA_HIBERNATE_DDL_AUTO: update
-    ports:
-      - 8081:8080
-    networks:
-      - network-aplication
-
-networks:
-  network-aplication:
