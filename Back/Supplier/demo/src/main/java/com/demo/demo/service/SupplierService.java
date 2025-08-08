@@ -8,8 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.demo.demo.Domain.SupplierDTO;
 import com.demo.demo.Domain.Supplier;
+import com.demo.demo.Domain.SupplierDTO;
 import com.demo.demo.Projection.SupplierProjection;
 import com.demo.demo.repository.SupplierRepository;
 
@@ -58,13 +58,25 @@ public class SupplierService {
 
     //Edit supplier;
     @Transactional
-    public void EditSupplier (Supplier supplier) {
-        repository.EditSupplier(supplier.getId(), supplier.getName(), supplier.getEmail(), supplier.getAddress(), supplier.getTelephone(), supplier.getCnpjCpf(), supplier.getCorporateReason());
+    public ResponseEntity<SupplierDTO> EditSupplier (Supplier supplier) {
+        try {
+            SupplierDTO data = new SupplierDTO(supplier.getId(), supplier.getName(), supplier.getEmail(), supplier.getAddress(), supplier.getTelephone(), supplier.getCnpjCpf(), supplier.getCorporateReason());
+            Supplier DataToEdit = data.convert();
+            repository.EditSupplier(DataToEdit.getName(), DataToEdit.getEmail(), DataToEdit.getAddress(), DataToEdit.getTelephone(), DataToEdit.getCnpjCpf(), DataToEdit.getCorporateReason());
+            return ResponseEntity.status(HttpStatus.OK).build();
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
 
     //Delete Supplier;
     @Transactional
-    public void DeleteSupplierById (Long id) {
-        repository.deleteById(id);
+    public ResponseEntity<String> DeleteSupplierById (Long id) {
+        try {
+            repository.deleteById(id);
+            return ResponseEntity.status(HttpStatus.OK).body("Supplier was Deleted!");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Internal Error!");
+        }
     }
 }

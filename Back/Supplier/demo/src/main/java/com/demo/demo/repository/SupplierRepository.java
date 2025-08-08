@@ -7,6 +7,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.demo.demo.Domain.Supplier;
+import com.demo.demo.Domain.SupplierDTO;
 import com.demo.demo.Projection.SupplierProjection;
 
 @Repository
@@ -19,5 +20,5 @@ public interface SupplierRepository extends JpaRepository<Supplier, Long>{
     //Edit Supplier;
     @Modifying
     @Query(value = "UPDATE suppliers SET name = :name, email = :email, address = :address, telephone = :telephone, cnpj_cpf = :CnpjCpf, corporate_reason = :CorporateReason WHERE id = :id", nativeQuery = true)
-    void EditSupplier (@Param("id") Long id, @Param("name") String name, @Param("email") String email, @Param("address") String address, @Param("telephone") String telephone, @Param("CnpjCpf") String CnpjCpf, @Param("CorporateReason") String CorporateReason);
+    SupplierDTO EditSupplier (@Param("name") String name, @Param("email") String email, @Param("address") String address, @Param("telephone") String telephone, @Param("CnpjCpf") String CnpjCpf, @Param("CorporateReason") String CorporateReason);
 }

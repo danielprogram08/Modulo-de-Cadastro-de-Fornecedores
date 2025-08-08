@@ -1,10 +1,8 @@
 package com.demo.demo.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,12 +13,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.demo.demo.Domain.SupplierDto;
-import com.demo.demo.Domain.SupplierEntity;
+import com.demo.demo.Domain.SupplierDTO;
+import com.demo.demo.Domain.Supplier;
 import com.demo.demo.Projection.SupplierProjection;
 import com.demo.demo.service.SupplierService;
-
-import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping(value = "/Supplier")
@@ -30,34 +26,32 @@ public class SupplierController {
     SupplierService service;
 
     @PostMapping(value = "/Register")
-    public ResponseEntity<SupplierDto> CreateSupplier (@Valid @RequestBody SupplierEntity supplier) {
-        Optional<SupplierDto> Supplier = service.CreateSupplier(supplier);
-        if (Supplier.isPresent()) {
-            return ResponseEntity.ok(Supplier.get());
-        } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        }
+    public ResponseEntity<SupplierDTO> CreateSupplier (@RequestBody Supplier supplier) {
+        ResponseEntity<SupplierDTO> data = service.CreateSupplier(supplier);
+        return data;
     }
 
     @GetMapping(value = "/SearchAll")
-    public List<SupplierDto> SearchAllSuppliers () {
-        List<SupplierDto> data = service.ListAllSuppliers();
+    public ResponseEntity<List<Supplier>> SearchAllSuppliers () {
+        ResponseEntity<List<Supplier>> data = service.ListAllSuppliers();
         return data;
     }
 
     @GetMapping(value = "/SearchByName/{name}")
-    public Optional<SupplierProjection> SearchByName (@PathVariable String name) {
-        Optional<SupplierProjection> data = service.SearchByName(name);
+    public ResponseEntity<SupplierProjection> SearchByName (@PathVariable String name) {
+        ResponseEntity<SupplierProjection> data = service.SearchByName(name);
         return data;
     }
 
     @PutMapping(value = "/Edit")
-    public void EditSupplier (@RequestBody SupplierEntity supplier) {
-        service.EditSupplier(supplier);
+    public ResponseEntity<SupplierDTO> EditSupplier (@RequestBody Supplier supplier) {
+        ResponseEntity<SupplierDTO> data = service.EditSupplier(supplier);
+        return data;
     }
 
     @DeleteMapping(value = "/DeleteById/{id}")
-    public void DeleteSupplier (@PathVariable Long id) {
-        service.DeleteSupplierById(id);
+    public ResponseEntity<String> DeleteSupplier (@PathVariable Long id) {
+        ResponseEntity<String> data = service.DeleteSupplierById(id);
+        return data;
     }
 }
