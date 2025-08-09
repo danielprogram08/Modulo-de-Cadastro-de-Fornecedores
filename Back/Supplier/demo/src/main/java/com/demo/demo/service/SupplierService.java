@@ -1,6 +1,7 @@
 package com.demo.demo.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -49,6 +50,7 @@ public class SupplierService {
     public ResponseEntity<SupplierProjection> SearchByName (String name) {
         try {
             SupplierProjection data = repository.SearchByName(name);
+            if (data == null) { return ResponseEntity.status(HttpStatus.NOT_FOUND).build(); }
             return ResponseEntity.status(HttpStatus.OK).body(data);
         } catch (Exception e) {
             System.out.println("Fornecedor não encontrado!");
@@ -58,11 +60,9 @@ public class SupplierService {
 
     //Edit supplier;
     @Transactional
-    public ResponseEntity<SupplierDTO> EditSupplier (Supplier supplier) {
+    public ResponseEntity<Void> EditSupplier (Supplier supplier) {
         try {
-            SupplierDTO data = new SupplierDTO(supplier.getId(), supplier.getName(), supplier.getEmail(), supplier.getAddress(), supplier.getTelephone(), supplier.getCnpjCpf(), supplier.getCorporateReason());
-            Supplier DataToEdit = data.convert();
-            repository.EditSupplier(DataToEdit.getName(), DataToEdit.getEmail(), DataToEdit.getAddress(), DataToEdit.getTelephone(), DataToEdit.getCnpjCpf(), DataToEdit.getCorporateReason());
+            repository.EditSupplier(supplier.getId(), supplier.getName(), supplier.getEmail(), supplier.getAddress(), supplier.getTelephone(), supplier.getCnpjCpf(), supplier.getCorporateReason());
             return ResponseEntity.status(HttpStatus.OK).build();
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
@@ -73,8 +73,12 @@ public class SupplierService {
     @Transactional
     public ResponseEntity<String> DeleteSupplierById (Long id) {
         try {
-            repository.deleteById(id);
-            return ResponseEntity.status(HttpStatus.OK).body("Supplier was Deleted!");
+            Optional<Supplier> data = repository.findById(id);
+            if (!data.isEmpty()) {
+                repository.deleteById(id);
+                return ResponseEntity.status(HttpStatus.OK).body("Supplier was deleted with sucess!");
+            }
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Supplier is not exists!");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Internal Error!");
         }

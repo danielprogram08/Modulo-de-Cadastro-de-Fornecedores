@@ -1,30 +1,28 @@
-//POST http://localhost:8081/Supplier/Register
-//Content-Type: application/json
+POST http://localhost:8080/Supplier/Register
+Content-Type: application/json
 
-//{   
-    //"name": "Daniel Silva",
-    //"email": "danieldanielsilva@gmail.com",
-    //"address": "Rua Conselheiro dos Santos, 2095",
-    //"telephone": "(85) 99999-9999",
-    //"cnpjCpf": "999.999.999-99",
-    //"corporateReason": "INVENTUS THECNOLOGYCAL CORPORATION"
-//}
+{   
+    "name": "Daniel Silva",
+    "email": "danieldanielsilva@gmail.com",
+    "address": "Rua Conselheiro dos Santos, 2095",
+    "telephone": "(85) 99999-9999",
+    "cnpjCpf": "999.999.999-99",
+    "corporateReason": "INVENTUS THECNOLOGYCAL CORPORATION"
+}
 
-//PUT http://localhost:8081/Supplier/Edit
-//Content-Type: application/json
+PUT http://localhost:8080/Supplier/Edit
+Content-Type: application/json
 
-//{   
-    //"id": 29,
-    //"name": "Daniel Silva",
-    //"email": "danielsilva@gmail.com",
-    //"address": "Rua Guaraniaba, 562",
-    //"telephone": "(85) 98888-8888",
-    //"cnpjCpf": "999.999.999-99",
-    //"corporateReason": "TOTVS THECNOLOGYCAL CORPORATION"
-//}
+{   "id": "2",
+    "name": "Daniel Silva",
+    "email": "danielsilva@gmail.com",
+    "address": "Rua Guaraniaba, 562",
+    "telephone": "(85) 98888-8888",
+    "cnpjCpf": "999.999.999-99",
+    "corporateReason": "TOTVS THECNOLOGYCAL CORPORATION"
+}
 
-//GET http://localhost:8081/Supplier/SearchAll
-//GET http://localhost:8081/Supplier/SearchByName/Daniel
-//GET http://localhost:8081/Supplier/SearchById/29
+GET http://localhost:8080/Supplier/SearchAll
+GET http://localhost:8080/Supplier/SearchByName/Daniel
 
-//DELETE http://localhost:8081/Supplier/DeleteById/32
+DELETE http://localhost:8080/Supplier/DeleteById/1

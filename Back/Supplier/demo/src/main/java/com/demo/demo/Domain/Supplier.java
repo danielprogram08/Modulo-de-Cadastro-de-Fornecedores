@@ -25,5 +25,9 @@ public class Supplier {
     private String address;
     private String telephone;
     private String cnpjCpf; 
-    private String corporateReason; 
+    private String corporateReason;
+
+    public Supplier (Long id) {
+        this.id = id;
+    }
 }

@@ -44,8 +44,8 @@ public class SupplierController {
     }
 
     @PutMapping(value = "/Edit")
-    public ResponseEntity<SupplierDTO> EditSupplier (@RequestBody Supplier supplier) {
-        ResponseEntity<SupplierDTO> data = service.EditSupplier(supplier);
+    public ResponseEntity<Void> EditSupplier (@RequestBody Supplier supplier) {
+        ResponseEntity<Void> data = service.EditSupplier(supplier);
         return data;
     }
 
