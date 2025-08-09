@@ -22,7 +22,7 @@ Content-Type: application/json
     "corporateReason": "TOTVS THECNOLOGYCAL CORPORATION"
 }
 
-GET http://localhost:8080/Supplier/SearchAll
+GET http://localhost:8081/Supplier/SearchAll
 GET http://localhost:8080/Supplier/SearchByName/Daniel
 
 DELETE http://localhost:8080/Supplier/DeleteById/1
