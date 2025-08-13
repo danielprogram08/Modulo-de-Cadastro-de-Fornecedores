@@ -38,8 +38,21 @@ services:
       retries: 5
       start_period: 30s
 
+  db-supplier-test:
+    image: mysql:8.4
+    container_name: 'mysql-supplier-test'
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 12345
+      MYSQL_DATABASE: 'Suppliersdb'
+    volumes:
+      - db-data-test:/var/lib/mysql
+    ports:
+      - "3305:3306"
+
 volumes:
   db-data:
+  db-data-test:
 
 networks:
   network-application:

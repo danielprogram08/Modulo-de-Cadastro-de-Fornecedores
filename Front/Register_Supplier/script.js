@@ -4,8 +4,9 @@ import { clearFields } from "./Functions/clearFields/clearFields.js";
 import { MenuSupplier } from "./Search_Supplier/script.js";
 import { MenuAllSupplier } from "./Search_Supplier/SearchAllSupplier/script.js";
 
-function register() {
+async function RequestPost() {
 
+    const UrlPost = 'http://localhost:8080/Supplier/Register';
     const name = document.getElementById("name").value;
     const email = document.getElementById("email").value;
     const address = document.getElementById("address").value;
@@ -15,20 +16,17 @@ function register() {
 
     showSpinnerLoadingRegister();
 
-    if (name == "" || email == "" || address == "" || telephone == "" || cnpjCpf == "" || corporateReason == "") {
+    if (!name || !email || !address || !telephone || !cnpjCpf || !corporateReason) { alertEmptyFields(); hideSpinnerLoadingRegister(); return; } 
 
-        alertEmptyFields();
-        hideSpinnerLoadingRegister();
-
-    } else {
-
-        fetch(`http://localhost:8081/Supplier/Register`, {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
+    try {
+        
+        const response = await fetch(UrlPost, {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
                 name: name,
                 email: email,
                 address: address,
@@ -37,26 +35,26 @@ function register() {
                 corporateReason: corporateReason
             })
         })
-            .then(reponse => {
-                if (!reponse.ok) {
-                    throw new Error("Erro: " + Error);
-                }
-                reponse => reponse.json();
-            })
 
-            .then(data => {
-                console.log(data);
-                alertSucessRegister();
-                hideSpinnerLoadingRegister();
-                clearFields();
-            })
+        if (!response.ok) { throw new Error(`Erro ao cadastrar um Fornecedor! + ${response.status}`); }
 
-            .catch(error => {
-                console.log("Erro: " + error);
-                alertErrorRegister();
-                hideSpinnerLoadingRegister();
-                clearFields();
-            });
+        const data = await response.json();
+        return data;
+
+    } catch (error) {
+        console.error('Ocorreu um erro enquanto cadastrava um fornecedor! ' + error);
+        alertErrorRegister();
+        hideSpinnerLoadingRegister();
+        clearFields();
+    }
+}
+
+async function register() {
+    const data = await RequestPost();
+    if (data) {
+        alertSucessRegister();
+        hideSpinnerLoadingRegister();
+        clearFields();
     }
 }
 
@@ -71,7 +69,7 @@ function search() {
 
     showSpinnerLoadingSearch();
 
-    if (name == "" || email == "" || address == "" || telephone == "" || cnpjCpf == "" || corporateReason == "") {  
+    if (!name || !email || !address || !telephone || !cnpjCpf || !corporateReason) {  
         hideSpinnerLoadingSearch();
         MenuAllSupplier();
 
