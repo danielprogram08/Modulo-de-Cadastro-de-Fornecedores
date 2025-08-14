@@ -2,26 +2,22 @@ import { alertErrorSearch } from "../Functions/Alerts/AlertsScript.js";
 import { EditFields } from "../Functions/ButtonAction/EditFields.js";
 import { DeleteSupplier } from "../Functions/ButtonAction/DeleteSupplier.js";
 
-export function MenuSupplier(name) {
+async function MenuSupplier(name) {
 
-    fetch(`http://localhost:8081/Supplier/SearchByName/${name}`)
+  try {
+    const UrlGetByName = `http://localhost:8080/Supplier/SearchByName/${name}`;
+    const response = await fetch(UrlGetByName);
+    if (!response.ok) { console.log('Erro ao consultar fornecedor! ' + response.status); }
+    const data = await response.json();
+    if (!data) { alertErrorSearch(); }
 
-    .then(response => response.json())
-
-    .then(supplier => {
-      if (supplier == null) {
-
-        alertErrorSearch();
-        
-    } else {
-
-      let id = supplier.id;
-      let name = supplier.name;
-      let email = supplier.email;
-      let address = supplier.address;
-      let telephone = supplier.telephone;
-      let cnpjCpf = supplier.cnpjCpf;
-      let corporateReason = supplier.corporateReason;
+      let id = data.id;
+      let Name = data.name;
+      let email = data.email;
+      let address = data.address;
+      let telephone = data.telephone;
+      let cnpjCpf = data.cnpjCpf;
+      let corporateReason = data.corporateReason;
 
       let body = document.querySelector("body");
       body.innerHTML = '';
@@ -58,30 +54,30 @@ export function MenuSupplier(name) {
           rows += `
             <tr class="supplier-row">
               <td style="${bgColor}; font-weight: bold;" id="supplier-id">${id}</td>
-              <td style="${bgColor}; font-weight: bold;" id="supplier-name">${name}</td>
+              <td style="${bgColor}; font-weight: bold;" id="supplier-name">${Name}</td>
               <td style="${bgColor}; font-weight: bold;" id="supplier-email">${email}</td>
               <td style="${bgColor}; font-weight: bold;" id="supplier-address">${address}</td>
               <td style="${bgColor}; font-weight: bold;" id="supplier-telephone">${telephone}</td>
               <td style="${bgColor}; font-weight: bold;" id="supplier-cnpjCpf">${cnpjCpf}</td>
               <td style="${bgColor}; font-weight: bold;" id="supplier-corporateReason">${corporateReason}</td>
-              <td style="${bgColor}; font-weight: bold;" ><button class="btn btn-light" id="Edit-Button" onclick="EditFields(${id})">🖋️​ EDITAR</button></td>
-              <td style="${bgColor}; font-weight: bold;" ><button class="btn btn-danger" id="Delete-Button" onclick="DeleteSupplier(${id})">❌​ DELETAR</button></td>
+              <td style="${bgColor}; font-weight: bold;" ><button class="btn btn-light" id="Edit-Button" onclick="EditFields(${id})">✎ EDITAR</button></td>
+              <td style="${bgColor}; font-weight: bold;" ><button class="btn btn-danger" id="Delete-Button" onclick="DeleteSupplier(${id})">✖︎ DELETAR</button></td>
             </tr>`;
   
       tbody.innerHTML = rows;
-          
-      }
-    })
-  
-    .catch(error => {
-        console.log("Erro: " + error);
-    });
+    
+  } catch (error) {
+    console.log("Erro ao consultar fornecedor! " + error);
   }
 
-  function Return() {
-    window.location.reload();
-  }
+}
 
-  window.EditFields = EditFields;
-  window.Return = Return;
-  window.AlertDeleteSupplier = DeleteSupplier;
+export { MenuSupplier };
+
+function Return() {
+  window.location.reload();
+}
+
+window.EditFields = EditFields;
+window.Return = Return;
+window.AlertDeleteSupplier = DeleteSupplier;

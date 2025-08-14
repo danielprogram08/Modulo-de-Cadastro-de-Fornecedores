@@ -3,7 +3,7 @@ Content-Type: application/json
 
 {   
     "name": "Daniel Silva",
-    "email": "danieldanielsilva@gmail.com",
+    "email": "danielsousa@gmail.com",
     "address": "Rua Conselheiro dos Santos, 2095",
     "telephone": "(85) 99999-9999",
     "cnpjCpf": "999.999.999-99",
@@ -22,7 +22,7 @@ Content-Type: application/json
     "corporateReason": "TOTVS THECNOLOGYCAL CORPORATION"
 }
 
-GET http://localhost:8081/Supplier/SearchAll
+GET http://localhost:8080/Supplier/SearchAll
 GET http://localhost:8080/Supplier/SearchByName/Daniel
 
 DELETE http://localhost:8080/Supplier/DeleteById/1

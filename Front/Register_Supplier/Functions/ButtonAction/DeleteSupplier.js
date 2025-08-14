@@ -28,17 +28,18 @@ export function DeleteSupplier(id) {
         alertDiv.style.top = "0px";
     }, 100);
 
-    function ConfirmAction(id) {
-        fetch(`http://localhost:8081/Supplier/DeleteById/${id}`, {
-            method: 'DELETE',})
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error("Erro ao deletar fornecedor");
-                }
-                return response.text();
-            })
-            .then(alertDiv.remove(), alertSucessDelete(), ReloadPage())
-            .catch(error => console.error("Erro: " + error));
+    async function ConfirmAction(id) {
+        try {
+            const UrlDelete = `http://localhost:8080/Supplier/DeleteById/${id}`;
+            const response = await fetch(UrlDelete, {method: 'DELETE'});
+            if (!response.ok) { throw new Error("Erro ao deletar fornecedor"); }
+            alertDiv.remove();
+            alertSucessDelete();
+            ReloadPage();
+            return response.status;
+        } catch (error) {
+            console.error(`Erro ao deletar fornecedor! + error`);
+        }
     }
 
     function CancelAction() {

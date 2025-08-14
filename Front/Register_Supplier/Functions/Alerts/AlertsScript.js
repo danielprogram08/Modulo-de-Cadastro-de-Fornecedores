@@ -147,7 +147,7 @@ export function alertErrorSearch() {
     `;
     alert.innerHTML =
         `𝗘𝗿𝗿𝗼 𝗮𝗼 𝗰𝗼𝗻𝘀𝘂𝗹𝘁𝗮𝗿 𝗳𝗼𝗿𝗻𝗲𝗰𝗲𝗱𝗼𝗿!<br>
-         Verifique se o fornecedor foi cadastrado!`
+         Verifique se o(s) fornecedor(es) foi cadastrado!`
 
     document.body.insertBefore(alert, document.body.firstChild);
 

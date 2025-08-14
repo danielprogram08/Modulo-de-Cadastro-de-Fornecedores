@@ -80,8 +80,8 @@ async function MenuAllSupplier() {
         <td style="${bgColor}; font-weight: bold;" id="supplier-telephone">${telephone}</td>
         <td style="${bgColor}; font-weight: bold;" id="supplier-cnpjCpf">${cnpjCpf}</td>
         <td style="${bgColor}; font-weight: bold;" id="supplier-corporateReason">${corporateReason}</td>
-        <td style="${bgColor}; font-weight: bold;" ><button style="${btColor}" class="btn btn-light" id="Edit-Button" onclick="EditFields(${id})">🖋️​ EDITAR</button></td>
-        <td style="${bgColor}; font-weight: bold;" ><button class="btn btn-danger" id="Delete-Button" onclick="DeleteSupplier(${id})">❌ DELETAR</button></td>
+        <td style="${bgColor}; font-weight: bold;" ><button style="${btColor}" class="btn btn-light" id="Edit-Button" onclick="EditFields(${id})">✎ EDITAR</button></td>
+        <td style="${bgColor}; font-weight: bold;" ><button class="btn btn-danger" id="Delete-Button" onclick="DeleteSupplier(${id})">✖︎ DELETAR</button></td>
       </tr>`;
   });
 

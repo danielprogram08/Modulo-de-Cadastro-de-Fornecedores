@@ -1,6 +1,6 @@
 import { alertEmptyFields, alertErrorRegister, alertSucessRegister } from "../Alerts/AlertsScript.js";
 
-export function EditFields(id) {
+function EditFields(id) {
     let body = document.querySelector("body");
 
     let table = `
@@ -56,33 +56,44 @@ export function EditFields(id) {
                 return;
             }
 
-            fetch(`http://localhost:8081/Supplier/Edit`, {
-                method: 'PUT',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    id: id,
-                    name: newName,
-                    email: newEmail,
-                    address: newAddress,
-                    telephone: newTelephone,
-                    cnpjCpf: newCnpjCpf,
-                    corporateReason: newCorporateReason
-                })
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error("Erro ao atualizar fornecedor");
-                } else {
-                  alertSucessRegister();
-                  reload();
-                }
-            })
-            .catch(() => alertErrorRegister());
-        }
+            RequestEdit(id, newName, newEmail, newAddress, newTelephone, newCnpjCpf, newCorporateReason);
+
+          }
     });
+}
+
+export { EditFields };
+
+async function RequestEdit(id, name, email, address, telephone, cnpjCpf, corporateReason) {
+
+  try {
+    const response = await fetch(`http://localhost:8080/Supplier/Edit`, {
+      method: 'PUT',
+      headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+          id: id,
+          name: name,
+          email: email,
+          address: address,
+          telephone: telephone,
+          cnpjCpf: cnpjCpf,
+          corporateReason: corporateReason
+      })
+  })
+
+  if (!response.ok) { alertErrorRegister(); console.log('Erro ao editar fornecedor! ' + response.status); }
+
+  alertSucessRegister();
+  reload();  
+
+  } catch (error) {
+    alertErrorRegister();
+    console.log('Erro ao tentar editar fornecedor! ' + error);
+  }
+  
 }
 
 function reload() {
