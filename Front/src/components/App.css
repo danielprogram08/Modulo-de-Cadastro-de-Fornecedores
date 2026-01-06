@@ -1,3 +1,9 @@
+@keyframes Animation {
+    from { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    to { transform: scale(1); }
+}
+
 .Container {
   padding: 0;
   margin: 0;
@@ -20,6 +26,10 @@ h1 {
   font-size: 24px;
   color: rgb(78, 78, 78);
   margin-bottom: 5%;
+  transition: all 0.2s ease-in-out;
+  animation-name: Animation;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
 }
 
 .inputs {
@@ -33,7 +43,7 @@ h1 {
 }
 
 #login, #senha {
-    background-color: #EAEAEA;
+    background-color: #dadada;
     height: 35px;
     width: 270px;
     padding-left: 10px;
