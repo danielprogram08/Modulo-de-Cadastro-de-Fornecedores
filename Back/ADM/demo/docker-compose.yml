@@ -16,7 +16,6 @@ services:
 
   app-administrators:
     build: .
-    image: app-administrators:1.0
     container_name: 'aplication-administrators'
     restart: always
     depends_on:

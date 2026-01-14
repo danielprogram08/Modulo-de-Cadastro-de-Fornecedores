@@ -1,9 +1,9 @@
 import "./App.css";
-import logo from "../../assets/insight-logo.png";
-import LoginBtn from "../button/LoginBtn.jsx";
-import LoginGmailBtn from "../button/LoginGmailBtn.jsx"
-import LoginInput from "../input/LoginInput.jsx"
-import PasswordInput from "../input/PasswordInput.jsx";
+import logo from "../../../assets/insight-logo.png";
+import LoginBtn from "../../button/LoginBtn.jsx";
+import LoginGmailBtn from "../../button/LoginGmailBtn.jsx";
+import LoginInput from "../../input/LoginInput.jsx";
+import PasswordInput from "../../input/LoginInput.jsx";
 
 function App() {
   return (

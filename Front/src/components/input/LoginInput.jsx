@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { useState } from "react";
 
-const StyledInput = styled.input`
+const StyledLogin = styled.input`
     background-color: #dadada;
     height: 35px;
     width: 270px;
@@ -17,11 +18,46 @@ const StyledInput = styled.input`
 `;
 
 function LoginInput(props) {
+
+    const [login, setLogin] = useState("");
+    const LoginChange = (event) => {
+        setLogin(event.target.value);
+    }
+
     return (
         <>
-            <StyledInput type="text" placeholder="Login:" {...props} />
+            <StyledLogin type="text" placeholder="Login:" value={login} onChange={LoginChange} {...props} />
         </>
     );
 }
 
-export default LoginInput;
+const StyledPassword = styled.input`
+    background-color: #dadada;
+    height: 35px;
+    width: 270px;
+    padding-left: 10px;
+    border-radius: 10px;
+    border: none;
+    text-indent: 10px;
+
+    &::placeholder {
+        font-weight: bold;
+        opacity: 0.5;
+    }
+`;
+
+function PasswordInput(props) {
+    
+    const [senha, setSenha] = useState("");
+    const SenhaChange = (event) => {
+        setSenha(event.target.value);
+    }
+
+    return (
+        <>
+            <StyledPassword type="password" placeholder="Senha:" value={senha} onChange={SenhaChange} {...props} />
+        </>
+    );
+}
+
+export default { LoginInput, PasswordInput };
