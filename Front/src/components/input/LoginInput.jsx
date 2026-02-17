@@ -1,25 +1,9 @@
-import styled from "styled-components";
+import "./Input.css";
 
-const StyledInput = styled.input`
-    background-color: #dadada;
-    height: 35px;
-    width: 270px;
-    padding-left: 10px;
-    border-radius: 10px;
-    border: none;
-    text-indent: 10px;
-    margin-bottom: 10%;
-
-    &::placeholder {
-        font-weight: bold;
-        opacity: 0.5;
-    }
-`;
-
-function LoginInput(props) {
+function LoginInput() {
     return (
         <>
-            <StyledInput type="text" placeholder="Login:" {...props} />
+            <input className="inputLogin" type="text" placeholder="Login:"/>
         </>
     );
 }

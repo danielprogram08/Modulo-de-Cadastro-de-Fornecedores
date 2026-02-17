@@ -9,7 +9,7 @@ function App() {
   return (
     <>
       <div className="Container">
-        <img src={logo} id="logo" alt="logo-insight" />
+        <img src={logo} className="logo" alt="logo-insight" />
         <h1>Bem-Vindo!</h1>
         <div className="inputs">
           <LoginInput />
